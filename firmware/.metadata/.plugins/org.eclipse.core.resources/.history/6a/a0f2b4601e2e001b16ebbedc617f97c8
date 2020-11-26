@@ -1,0 +1,31 @@
+/*
+ * encoder.cc
+ *
+ *  Created on: Nov 23, 2020
+ *      Author: jkailimcnelly
+ */
+
+#include "encoder.hh"
+
+/**
+ * @brief Sets the current absolute encoder angle (degrees) as the zero position.
+ */
+void Encoder::set_zero_angle() {
+	zero_angle_ = angle_;
+}
+
+/**
+ * @brief Sets the encoder zero position to a specific value.
+ * @param[in] new_zero_angle The new zero position of the encoder, in degrees.
+ */
+void Encoder::set_zero_angle(uint16_t new_zero_angle) {
+	zero_angle_ = new_zero_angle;
+}
+
+/**
+ * @brief Returns the current angle of the encoder, in degrees.
+ * @retval Angle of the encoder, in degrees.
+ */
+void Encoder::get_angle() {
+	return angle_;
+}

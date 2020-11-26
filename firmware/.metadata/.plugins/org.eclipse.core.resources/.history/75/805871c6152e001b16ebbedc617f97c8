@@ -1,0 +1,15 @@
+/*
+ * test_framework.cc
+ *
+ *  Created on: Nov 23, 2020
+ *      Author: jkailimcnelly
+ */
+
+template <class T>
+bool assert_equal(T a, T b) {
+	return a == b;
+}
+
+template <class T>
+
+

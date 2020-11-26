@@ -1,0 +1,35 @@
+#include "as5048a.hh"
+
+/**
+ * @brief Constructor.
+ */
+AS5048A::AS5048A(SPI_HandleTypeDef * encoder_spi) {
+	encoder_spi_ = encoder_spi;
+}
+
+/**
+ * @brief Initializes the interface to the AS5048A
+ */
+void AS5048A::Init() {
+
+}
+
+/**
+ * @brief Reads the AS5048A encoder over SPI.
+ */
+void AS5048A::Update() {
+
+}
+
+/**
+ * @brief Calculates the parity bit to ensure that a 16-bit unsigned integer has even parity.
+ * @param[in] val 16-bit value that needs a parity bit (only the 15 LS bits are read).
+ * @retval The parity bit that will reside in the MS bit to make the uint16_t have even parity.
+ */
+uint8_t AS5048A::CalcEvenParity_(uint16_t val) {
+	uint8_t par = 0;
+	for (uint8_t shift = 0; shift < 15; shift++) {
+		par ^= (val & (0x1<<shift));
+	}
+	return par;
+}

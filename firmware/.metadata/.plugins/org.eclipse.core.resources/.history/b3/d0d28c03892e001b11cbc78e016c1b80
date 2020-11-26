@@ -1,0 +1,28 @@
+/*
+ * as5048a.hh
+ *
+ *  Created on: Nov 23, 2020
+ *      Author: jkailimcnelly
+ */
+
+#ifndef ENCODER_INC_AS5048A_HH_
+#define ENCODER_INC_AS5048A_HH_
+
+#include "encoder.hh"
+#include "stm32f7xx_hal.h"
+//#include "main.h"
+
+class AS5048A : public Encoder {
+private:
+	SPI_HandleTypeDef * encoder_spi_;
+
+public:
+	AS5048A(SPI_HandleTypeDef * encoder_spi);
+	void Init();
+	void Update();
+
+};
+
+
+
+#endif /* ENCODER_INC_AS5048A_HH_ */

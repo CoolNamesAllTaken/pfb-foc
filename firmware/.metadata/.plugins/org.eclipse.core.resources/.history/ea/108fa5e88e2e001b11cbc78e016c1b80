@@ -1,0 +1,108 @@
+/*
+ * as5048a_test.cc
+ *
+ *  Created on: Nov 23, 2020
+ *      Author: jkailimcnelly
+ */
+
+#include "test_framework.hh"
+
+#define private public // where is your god now (use this to test private utility functions)
+#include "as5048a.hh"
+
+bool TestEncoderCreate() {
+	TESTPRINT("Create Encoder\r\n");
+	SPI_HandleTypeDef * dummy_spi = NULL;
+	AS5048A enc(dummy_spi);
+
+	uint16_t enc_angle = enc.get_angle();
+	if (enc_angle != 0) {
+		FAILPRINT("Initialized with nonzero encoder angle: got %d but expected %d\r\n", enc_angle, 0);
+		return false;
+	}
+
+	return true;
+}
+
+bool TestEncoderZero() {
+	TESTPRINT("Zero Encoder\r\n");
+	SPI_HandleTypeDef * dummy_spi = NULL;
+	AS5048A enc(dummy_spi);
+
+	TTESTPRINT("Test negative relative angle.\r\n");
+	enc.set_zero_angle(55); // set zero angle to 55 degrees
+	uint16_t angle = enc.get_angle();
+	if (angle != 360-55) {
+		TFAILPRINT("Expected angle to be %u but got %u\r\n", 360-55, angle);
+		return false;
+	}
+
+	TTESTPRINT("Test setting zero angle too large.\r\n");
+	enc.set_zero_angle(3600);
+	angle = enc.get_angle();
+	if (angle != 0) {
+		TFAILPRINT("Expected angle to be %u but got %u\r\n", 0, angle);
+		return false;
+	}
+
+	return true;
+}
+
+bool TestAS5048AParity() {
+	TESTPRINT("Test encoder SPI parity helper\r\n");
+	SPI_HandleTypeDef * dummy_spi = NULL;
+	AS5048A enc(dummy_spi);
+
+	TTESTPRINT("Test parity on 0x0\r\n");
+	uint8_t par = enc.CalcEvenParity_(0b0000000000000000);
+	uint8_t expect_par = 0;
+	if (par != expect_par) {
+		TFAILPRINT("Expected parity bit to be %d but got %d\r\n", expect_par, par);
+		return false;
+	}
+
+	TTESTPRINT("Test parity on 0x1\r\n");
+	par = enc.CalcEvenParity_(0b0000000000000001);
+	expect_par = 1;
+	if (par != expect_par) {
+		TFAILPRINT("Expected parity bit to be %d but got %d\r\n", expect_par, par);
+		return false;
+	}
+
+	TTESTPRINT("Test parity on 15th bit is 1\r\n");
+	par = enc.CalcEvenParity_(0b0100000000000000);
+	expect_par = 1;
+	if (par != expect_par) {
+		TFAILPRINT("Expected parity bit to be %d but got %d\r\n", expect_par, par);
+		return false;
+	}
+
+	TTESTPRINT("Test parity on ignore 16th bit\r\n");
+	par = enc.CalcEvenParity_(0b1000000000000000);
+	expect_par = 0;
+	if (par != expect_par) {
+		TFAILPRINT("Expected parity bit to be %d but got %d\r\n", expect_par, par);
+		return false;
+	}
+
+	return true;
+}
+
+void TestEncoderAll() {
+	bool enc_passed = true;
+	LPRINT("Test Encoder Class");
+	enc_passed &= TestEncoderCreate();
+	enc_passed &= TestEncoderZero();
+	if (enc_passed) {
+		PASSPRINT("Encoder Class\r\n");
+	}
+
+	LPRINT("Test AS5048A Class");
+	bool as5048a_passed = true;
+	as5048a_passed &= TestAS5048AParity();
+	if (as5048a_passed) {
+		PASSPRINT("AS5048A Class\r\n");
+	}
+
+}
+

@@ -1,0 +1,16 @@
+/*
+ * test_as5048a.hh
+ *
+ *  Created on: Nov 23, 2020
+ *      Author: jkailimcnelly
+ */
+
+#ifndef TESTS_INC_TEST_AS5048A_HH_
+#define TESTS_INC_TEST_AS5048A_HH_
+
+#include "test_framework.hh"
+
+void TestAS5048ACreate();
+void TestAS5048AZero();
+
+#endif /* TESTS_INC_TEST_AS5048A_HH_ */

@@ -1,0 +1,20 @@
+#include "main.h"
+#include "cmsis_os.h"
+
+osThreadId_t task1Handle;
+const osThreadAttr_t task1_attributes = {
+  .name = "task1",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
+};
+
+/**
+ * @brief Main function that avoids all the auto-generated junk from ST CubeMX.
+ * @retval int
+ */
+int main_run() {
+
+	defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+	return 1;
+}

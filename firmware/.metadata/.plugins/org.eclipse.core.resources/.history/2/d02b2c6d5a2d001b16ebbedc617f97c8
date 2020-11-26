@@ -1,0 +1,4 @@
+int main_run() {
+
+	return 1;
+}

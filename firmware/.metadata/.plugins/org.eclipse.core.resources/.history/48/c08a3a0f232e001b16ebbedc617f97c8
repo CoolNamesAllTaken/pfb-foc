@@ -1,0 +1,3 @@
+test_encoder.cc:11:6:void TestEncoderCreate()	16	static
+test_encoder.cc:20:6:void TestEncoderZero()	24	static
+test_encoder.cc:39:6:void TestEncoderAll()	8	static

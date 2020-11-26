@@ -1,0 +1,5 @@
+encoder.cc:16:7:float Encoder::WrapAngle_(float)	32	static
+encoder.cc:27:6:void Encoder::set_zero_angle()	16	static
+encoder.cc:35:6:void Encoder::set_zero_angle(float)	16	static
+encoder.cc:43:7:float Encoder::get_angle()	16	static
+encoder.cc:63:6:void Encoder::set_angle(float)	16	static

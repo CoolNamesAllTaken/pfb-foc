@@ -1,0 +1,20 @@
+20:50:58 **** Incremental Build of configuration Debug for project nucleo ****
+make -j3 all 
+arm-none-eabi-g++ "../App/Tests/Src/test_encoder.cc" -mcpu=cortex-m7 -std=gnu++14 -g3 -DUSE_HAL_DRIVER -DSTM32F722xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1 -I../App -I../App/Tests/Inc -I../App/Encoder/Inc -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"App/Tests/Src/test_encoder.d" -MT"App/Tests/Src/test_encoder.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "App/Tests/Src/test_encoder.o"
+arm-none-eabi-g++ -o "nucleo.elf" @"objects.list"   -mcpu=cortex-m7 -T"/Users/jkailimcnelly/Box Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: nucleo.elf
+ 
+arm-none-eabi-objdump -h -S  nucleo.elf  > "nucleo.list"
+arm-none-eabi-objcopy  -O binary  nucleo.elf  "nucleo.bin"
+arm-none-eabi-size   nucleo.elf 
+   text	   data	    bss	    dec	    hex	filename
+  48648	    492	  21676	  70816	  114a0	nucleo.elf
+Finished building: default.size.stdout
+ 
+Finished building: nucleo.bin
+ 
+Finished building: nucleo.list
+ 
+
+20:50:59 Build Finished. 0 errors, 0 warnings. (took 998ms)
+
