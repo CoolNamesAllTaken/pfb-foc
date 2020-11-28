@@ -11,7 +11,7 @@
 #define protected public
 #include "as5048a.hh"
 
-#define TEST_SPI // run actual SPI test on the honest to god SPI port (use logic analyzer to debug)
+//#define TEST_SPI // run actual SPI test on the honest to god SPI port (use logic analyzer to debug)
 #ifdef TEST_SPI
 #include "main.h" // gives access to encoder_spi global handle
 #endif
@@ -79,7 +79,7 @@ bool TestEncoderAngle() {
 	T_TEST_PRINT("Test negative wrap.\r\n");
 	enc.set_angle(-500.9);
 	angle = enc.get_angle();
-	expect_angle = -500.9 + 360;
+	expect_angle = -500.9 + 2*360;
 	if (angle != expect_angle) {
 		TT_FAIL_PRINT("Expected angle to be %f but got %f.\r\n", expect_angle, angle);
 		return false;
@@ -203,7 +203,7 @@ bool TestAS5048APackets() {
 #ifdef TEST_SPI
 bool TestEncoderSPI() {
 	TEST_PRINT("Test AS5048A SPI Interface. Press button to zero encoder!\r\n");
-	AS5048A enc(&hspi1, SPI1_CS_GPIO_Port, SPI1_CS_Pin);
+	AS5048A enc(encoder_hspi, ENC_SPI_CS_GPIO_Port, ENC_SPI_CS_Pin);
 	enc.Init();
 	float enc_pos;
 	do {
@@ -237,6 +237,7 @@ void TestEncoderAll() {
 	L_PRINT("Test Encoder Class");
 	enc_passed &= TestEncoderCreate();
 	enc_passed &= TestEncoderZero();
+	enc_passed &= TestEncoderAngle();
 	if (enc_passed) {
 		PASS_PRINT("Encoder Class\r\n");
 	} else {

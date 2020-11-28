@@ -5,6 +5,7 @@
 #ifdef RUN_TESTS
 #include "test_framework.hh"
 #include "test_encoder.hh"
+#include "test_half_bridge.hh"
 #endif
 
 /* Constants */
@@ -54,6 +55,7 @@ void startTask1(void * argument) {
 #ifdef RUN_TESTS
 void RunAllTests() {
 	TestEncoderAll();
+	TestHalfBridgeAll();
 }
 #endif
 

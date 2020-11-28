@@ -30,6 +30,7 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 App/Encoder/Src \
+App/Motor/Src \
 App/Src \
 App/Tests/Src \
 Core/Src \

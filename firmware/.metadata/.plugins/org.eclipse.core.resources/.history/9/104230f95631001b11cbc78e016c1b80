@@ -1,0 +1,26 @@
+/*
+ * stspin830.cc
+ *
+ *  Created on: Nov 27, 2020
+ *      Author: jkailimcnelly
+ */
+
+#include "stspin830.hh"
+
+/**
+ * @brief Initializes the relevant channel of the STSPIN320 half-bridge.
+ */
+void STSPIN830::Init() {
+	// Initialize with H-bridge in high-Z state.
+	HAL_GPIO_WritePin(en_port_, en_pin_, en_state_);
+	HAL_GPIO_WritePin(in_port_, in_pin_, in_state_);
+}
+
+void STSPIN830::Update() {
+	// Check current
+	current_ma_ = curr_sense_adc_voltage
+}
+
+
+
+

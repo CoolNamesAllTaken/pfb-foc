@@ -8,9 +8,6 @@
 #ifndef TESTS_INC_TEST_ENCODER_HH_
 #define TESTS_INC_TEST_ENCODER_HH_
 
-void TestEncoderCreate();
-void TestEncoderZero();
-
 void TestEncoderAll();
 
 #endif /* TESTS_INC_TEST_ENCODER_HH_ */

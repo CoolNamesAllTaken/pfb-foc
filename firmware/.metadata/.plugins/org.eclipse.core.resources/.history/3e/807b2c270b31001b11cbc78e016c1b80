@@ -1,0 +1,31 @@
+/*
+ * half_bridge.hh
+ *
+ *  Created on: Nov 26, 2020
+ *      Author: jkailimcnelly
+ */
+
+#ifndef MOTOR_INC_HALF_BRIDGE_HH_
+#define MOTOR_INC_HALF_BRIDGE_HH_
+
+class HalfBridge {
+private:
+	float target_current_{0};
+
+public:
+
+	enum HalfBridgeState {
+		OFF = 0,
+		LOW_SIDE_ON,
+		HIGH_SIDE_ON
+	};
+	void Init();
+	void Update();
+	void set_target_current(float new_target_current);
+	float get_target_current();
+
+};
+
+
+
+#endif /* MOTOR_INC_HALF_BRIDGE_HH_ */

@@ -42,17 +42,6 @@ void Encoder::set_zero_angle(float new_zero_angle) {
  */
 float Encoder::get_angle() {
 	return WrapAngle_(angle_ - zero_angle_);
-//	float rel_angle = angle_ - zero_angle_;
-//	if (rel_angle < 0) {
-//		return 360.0 - rel_angle;
-//	}
-//	return rel_angle;
-//	if (angle_ >= zero_angle_) {
-//		return angle_ - zero_angle_;
-//	} else {
-//		return 360.0 - zero_angle_ - angle_;
-//	}
-
 }
 
 /**
@@ -61,11 +50,5 @@ float Encoder::get_angle() {
  * @param[in] angle Angle value in degrees (float).
  */
 void Encoder::set_angle(float new_angle) {
-//	float new_angle = fmod(angle, 360);
-//	if (new_angle < 0) {
-//		new_angle += 360;
-//	} else if (new_angle > 360) {
-//		new_angle -= 360;
-//	}
 	angle_ = WrapAngle_(new_angle);
 }

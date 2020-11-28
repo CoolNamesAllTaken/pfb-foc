@@ -1,0 +1,17 @@
+/*
+ * half_bridge.cc
+ *
+ *  Created on: Nov 26, 2020
+ *      Author: jkailimcnelly
+ */
+
+#include "half_bridge.hh"
+
+/**
+ * @brief Sets the target current of the half-bridge.
+ * @param[in] target_current Target current, in milliamps.
+ */
+void HalfBridge::set_target_current(uint16_t target_current) {
+	target_current_ = target_current;
+}
+

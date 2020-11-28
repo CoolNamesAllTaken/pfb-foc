@@ -1,0 +1,4 @@
+half_bridge.hh:23:2:HalfBridge::HalfBridge()	16	static
+stspin830.hh:43:2:STSPIN830::STSPIN830(GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t, const uint16_t&)	24	static
+test_half_bridge.cc:27:6:bool TestHalfBridgeCreate()	64	static
+test_half_bridge.cc:46:6:void TestHalfBridgeAll()	16	static

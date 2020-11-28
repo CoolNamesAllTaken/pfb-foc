@@ -1,5 +1,0 @@
-#include "as5048a.hh"
-
-AS5048A::AS5048A(SPI_HandleTypeDef * encoder_spi) {
-	encoder_spi_ = encoder_spi;
-}

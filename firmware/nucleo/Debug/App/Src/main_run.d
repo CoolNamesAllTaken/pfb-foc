@@ -19,6 +19,8 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h \
+ ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h \
+ ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_flash.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_flash_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_i2c.h \
@@ -45,7 +47,8 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- ../App/Tests/Inc/test_framework.hh ../App/Tests/Inc/test_encoder.hh
+ ../App/Tests/Inc/test_framework.hh ../App/Tests/Inc/test_encoder.hh \
+ ../App/Tests/Inc/test_half_bridge.hh
 
 ../Core/Inc/main.h:
 
@@ -88,6 +91,10 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h:
 
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h:
+
+../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h:
+
+../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc_ex.h:
 
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_flash.h:
 
@@ -144,3 +151,5 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 ../App/Tests/Inc/test_framework.hh:
 
 ../App/Tests/Inc/test_encoder.hh:
+
+../App/Tests/Inc/test_half_bridge.hh:

@@ -1,0 +1,22 @@
+/*
+ * half_bridge.hh
+ *
+ *  Created on: Nov 26, 2020
+ *      Author: jkailimcnelly
+ */
+
+#ifndef MOTOR_INC_HALF_BRIDGE_HH_
+#define MOTOR_INC_HALF_BRIDGE_HH_
+
+class HalfBridge {
+private:
+	GPIO_TypeDef * encoder_cs_port_;
+	uint16_t encoder_cs_pin_;
+
+public:
+
+};
+
+
+
+#endif /* MOTOR_INC_HALF_BRIDGE_HH_ */

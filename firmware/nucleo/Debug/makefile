@@ -17,6 +17,7 @@ RM := rm -rf
 -include Core/Src/subdir.mk
 -include App/Tests/Src/subdir.mk
 -include App/Src/subdir.mk
+-include App/Motor/Src/subdir.mk
 -include App/Encoder/Src/subdir.mk
 -include subdir.mk
 -include objects.mk
