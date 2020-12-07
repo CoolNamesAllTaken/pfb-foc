@@ -1,3 +1,0 @@
-test_pid_controller.cc:14:6:bool TestPIDConfig()	24	static
-test_pid_controller.cc:33:6:bool TestPIDControllerCreate()	920	static
-test_pid_controller.cc:75:6:void TestPIDControllerAll()	16	static
