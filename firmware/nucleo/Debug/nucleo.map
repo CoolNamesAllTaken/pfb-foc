@@ -29,9 +29,9 @@ Archive member included to satisfy reference by file (symbol)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-nano-vfprintf_i.o)
                               /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-nano-vfprintf_float.o) (_printf_common)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-printf.o)
-                              App/Tests/Src/test_encoder.o (printf)
+                              App/Test/Src/test_encoder.o (printf)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-puts.o)
-                              App/Tests/Src/test_encoder.o (puts)
+                              App/Test/Src/test_encoder.o (puts)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-signal.o)
                               /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-abort.o) (raise)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-signalr.o)
@@ -111,7 +111,7 @@ Archive member included to satisfy reference by file (symbol)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
                               App/Encoder/Src/as5048a.o (__aeabi_dmul)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_cmpdf2.o)
-                              /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-nano-vfprintf_float.o) (__aeabi_dcmpeq)
+                              App/Test/Src/test_pid_controller.o (__aeabi_dcmpeq)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_unorddf2.o)
                               /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc_nano.a(lib_a-nano-vfprintf_float.o) (__aeabi_dcmpun)
 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
@@ -402,6 +402,49 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x233 App/Motor/Src/stspin830.o
  .debug_macro   0x0000000000000000       0xba App/Motor/Src/stspin830.o
  .debug_macro   0x0000000000000000      0x14e App/Motor/Src/stspin830.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .group         0x0000000000000000        0xc App/PIDController/Src/pid_controller.o
+ .text          0x0000000000000000        0x0 App/PIDController/Src/pid_controller.o
+ .data          0x0000000000000000        0x0 App/PIDController/Src/pid_controller.o
+ .bss           0x0000000000000000        0x0 App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDControllerC2Efff
+                0x0000000000000000       0x58 App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDControllerC2E9PIDConfig
+                0x0000000000000000       0x60 App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDController9get_gainsEv
+                0x0000000000000000       0x3c App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDController9set_gainsE9PIDConfig
+                0x0000000000000000       0x38 App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDController6UpdateEf
+                0x0000000000000000       0x3e App/PIDController/Src/pid_controller.o
+ .text._ZN13PIDController9get_stateEv
+                0x0000000000000000       0x2a App/PIDController/Src/pid_controller.o
+ .debug_info    0x0000000000000000      0x399 App/PIDController/Src/pid_controller.o
+ .debug_abbrev  0x0000000000000000      0x1a1 App/PIDController/Src/pid_controller.o
+ .debug_aranges
+                0x0000000000000000       0x48 App/PIDController/Src/pid_controller.o
+ .debug_ranges  0x0000000000000000       0x38 App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x78 App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000      0xb32 App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x1c App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x22 App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x8e App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x51 App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0xef App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000       0x6a App/PIDController/Src/pid_controller.o
+ .debug_macro   0x0000000000000000      0x1df App/PIDController/Src/pid_controller.o
+ .debug_line    0x0000000000000000      0x454 App/PIDController/Src/pid_controller.o
+ .debug_str     0x0000000000000000     0x426d App/PIDController/Src/pid_controller.o
+ .comment       0x0000000000000000       0x7c App/PIDController/Src/pid_controller.o
+ .debug_frame   0x0000000000000000       0xfc App/PIDController/Src/pid_controller.o
+ .ARM.attributes
+                0x0000000000000000       0x39 App/PIDController/Src/pid_controller.o
  .group         0x0000000000000000        0xc App/Src/main_run.o
  .group         0x0000000000000000        0xc App/Src/main_run.o
  .group         0x0000000000000000        0xc App/Src/main_run.o
@@ -558,316 +601,406 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x43 App/Src/main_run.o
  .debug_macro   0x0000000000000000       0x20 App/Src/main_run.o
  .debug_macro   0x0000000000000000      0x1a3 App/Src/main_run.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_encoder.o
- .text          0x0000000000000000        0x0 App/Tests/Src/test_encoder.o
- .data          0x0000000000000000        0x0 App/Tests/Src/test_encoder.o
- .bss           0x0000000000000000        0x0 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0xb32 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x22 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x18 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x3c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x34 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x16 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x353 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x52 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x1f App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x43 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x20 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x1a3 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x6a App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x52 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x40 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x40 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0xd7 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x3d App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x16 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x137 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0xef App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x1df App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x2a5 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x2e App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x3b App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x22 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000     0x12cd App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x11f App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x19 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000    0x15c60 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x43 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000     0x36b4 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000     0x1588 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x6c4 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x17e App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x117 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x1d8 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x27 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x24f App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x71 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x58 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x236 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x416 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x153 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x107 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x154 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x2c4 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x12 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x22c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x61 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0xa5 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x12f App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x108 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x35 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x2fe App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0xa2f App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x59 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x53c App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0x44 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x233 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000       0xba App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000000000      0x14e App/Tests/Src/test_encoder.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .group         0x0000000000000000        0xc App/Tests/Src/test_half_bridge.o
- .text          0x0000000000000000        0x0 App/Tests/Src/test_half_bridge.o
- .data          0x0000000000000000        0x0 App/Tests/Src/test_half_bridge.o
- .bss           0x0000000000000000        0x0 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0xb32 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x22 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x40 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x18 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x94 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x3c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x34 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x16 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x57 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x97 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x353 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x104 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x52 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x1f App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x43 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x20 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x1a3 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x6a App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x52 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x40 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x10 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x40 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0xd7 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x3d App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x16 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x137 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x46 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x2a5 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x2e App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x3b App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0xef App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x1df App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x1c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x22 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0xd9 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000     0x12cd App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x11f App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x19 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000    0x15c60 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x43 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000     0x36b4 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x5b App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000     0x1588 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x6c4 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x17e App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x117 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x1d8 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x27 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x24f App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x71 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x58 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x236 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x416 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x153 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x107 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x154 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x2c4 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x12 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x22c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x61 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0xa5 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x12f App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x108 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x35 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x2fe App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0xa2f App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x59 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x53c App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0x44 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x233 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000       0xba App/Tests/Src/test_half_bridge.o
- .debug_macro   0x0000000000000000      0x14e App/Tests/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_encoder.o
+ .text          0x0000000000000000        0x0 App/Test/Src/test_encoder.o
+ .data          0x0000000000000000        0x0 App/Test/Src/test_encoder.o
+ .bss           0x0000000000000000        0x0 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0xb32 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x22 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x18 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x3c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x34 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x353 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x1f App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x43 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x20 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x1a3 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x6a App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0xd7 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x3d App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x137 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0xef App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x1df App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x2a5 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x2e App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x3b App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x22 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000     0x12cd App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x11f App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x19 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000    0x15c60 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x43 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000     0x36b4 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000     0x1588 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x6c4 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x17e App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x117 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x1d8 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x27 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x24f App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x71 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x58 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x236 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x416 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x153 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x107 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x154 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x2c4 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x12 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x22c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x61 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0xa5 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x12f App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x108 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x35 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x2fe App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0xa2f App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x59 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x53c App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0x44 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x233 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000       0xba App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000000000      0x14e App/Test/Src/test_encoder.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_half_bridge.o
+ .text          0x0000000000000000        0x0 App/Test/Src/test_half_bridge.o
+ .data          0x0000000000000000        0x0 App/Test/Src/test_half_bridge.o
+ .bss           0x0000000000000000        0x0 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0xb32 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x22 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x18 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x94 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x3c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x34 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x57 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x97 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x353 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x104 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x1f App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x43 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x20 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x1a3 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x6a App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0xd7 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x3d App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x137 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x46 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x2a5 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x2e App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x3b App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0xef App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x1df App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x22 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0xd9 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000     0x12cd App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x11f App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x19 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000    0x15c60 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x43 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000     0x36b4 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x5b App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000     0x1588 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x6c4 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x17e App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x117 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x1d8 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x27 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x24f App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x71 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x58 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x236 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x416 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x153 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x107 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x154 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x2c4 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x12 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x22c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x61 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0xa5 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x12f App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x108 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x35 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x2fe App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0xa2f App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x59 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x53c App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0x44 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x233 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000       0xba App/Test/Src/test_half_bridge.o
+ .debug_macro   0x0000000000000000      0x14e App/Test/Src/test_half_bridge.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .group         0x0000000000000000        0xc App/Test/Src/test_pid_controller.o
+ .text          0x0000000000000000        0x0 App/Test/Src/test_pid_controller.o
+ .data          0x0000000000000000        0x0 App/Test/Src/test_pid_controller.o
+ .bss           0x0000000000000000        0x0 App/Test/Src/test_pid_controller.o
+ .rodata        0x0000000000000000      0x2a5 App/Test/Src/test_pid_controller.o
+ .text._Z13TestPIDConfigv
+                0x0000000000000000       0xb4 App/Test/Src/test_pid_controller.o
+ .text._Z23TestPIDControllerCreatev
+                0x0000000000000000      0x288 App/Test/Src/test_pid_controller.o
+ .text._Z20TestPIDControllerAllv
+                0x0000000000000000       0x54 App/Test/Src/test_pid_controller.o
+ .debug_info    0x0000000000000000      0xb05 App/Test/Src/test_pid_controller.o
+ .debug_abbrev  0x0000000000000000      0x23d App/Test/Src/test_pid_controller.o
+ .debug_aranges
+                0x0000000000000000       0x30 App/Test/Src/test_pid_controller.o
+ .debug_ranges  0x0000000000000000       0x20 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x1ec App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0xb32 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x22 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x18 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x94 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x3c App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x34 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x57 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x97 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x353 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x104 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x1f App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x43 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x20 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x1a3 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x6a App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x52 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x10 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x40 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0xd7 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x3d App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x16 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x137 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x46 App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0x1c App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000       0xef App/Test/Src/test_pid_controller.o
+ .debug_macro   0x0000000000000000      0x1df App/Test/Src/test_pid_controller.o
+ .debug_line    0x0000000000000000      0x67e App/Test/Src/test_pid_controller.o
+ .debug_str     0x0000000000000000     0x8a39 App/Test/Src/test_pid_controller.o
+ .comment       0x0000000000000000       0x7c App/Test/Src/test_pid_controller.o
+ .debug_frame   0x0000000000000000       0x88 App/Test/Src/test_pid_controller.o
+ .ARM.attributes
+                0x0000000000000000       0x39 App/Test/Src/test_pid_controller.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
@@ -7114,9 +7247,11 @@ LOAD App/Encoder/Src/as5048a.o
 LOAD App/Encoder/Src/encoder.o
 LOAD App/Motor/Src/half_bridge.o
 LOAD App/Motor/Src/stspin830.o
+LOAD App/PIDController/Src/pid_controller.o
 LOAD App/Src/main_run.o
-LOAD App/Tests/Src/test_encoder.o
-LOAD App/Tests/Src/test_half_bridge.o
+LOAD App/Test/Src/test_encoder.o
+LOAD App/Test/Src/test_half_bridge.o
+LOAD App/Test/Src/test_pid_controller.o
 LOAD Core/Src/freertos.o
 LOAD Core/Src/main.o
 LOAD Core/Src/stm32f7xx_hal_msp.o
@@ -7328,36 +7463,36 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
                 0x0000000008001534       0x10 App/Src/main_run.o
                 0x0000000008001534                RunAllTests()
  .text._Z17TestEncoderCreatev
-                0x0000000008001544       0x6c App/Tests/Src/test_encoder.o
+                0x0000000008001544       0x6c App/Test/Src/test_encoder.o
                 0x0000000008001544                TestEncoderCreate()
  .text._Z15TestEncoderZerov
-                0x00000000080015b0      0x108 App/Tests/Src/test_encoder.o
+                0x00000000080015b0      0x108 App/Test/Src/test_encoder.o
                 0x00000000080015b0                TestEncoderZero()
  .text._Z16TestEncoderAnglev
-                0x00000000080016b8      0x10c App/Tests/Src/test_encoder.o
+                0x00000000080016b8      0x10c App/Test/Src/test_encoder.o
                 0x00000000080016b8                TestEncoderAngle()
  .text._Z17TestAS5048AParityv
-                0x00000000080017c4      0x114 App/Tests/Src/test_encoder.o
+                0x00000000080017c4      0x114 App/Test/Src/test_encoder.o
                 0x00000000080017c4                TestAS5048AParity()
  .text._Z18TestAS5048APacketsv
-                0x00000000080018d8      0x1ec App/Tests/Src/test_encoder.o
+                0x00000000080018d8      0x1ec App/Test/Src/test_encoder.o
                 0x00000000080018d8                TestAS5048APackets()
  .text._Z14TestEncoderAllv
-                0x0000000008001ac4       0xd8 App/Tests/Src/test_encoder.o
+                0x0000000008001ac4       0xd8 App/Test/Src/test_encoder.o
                 0x0000000008001ac4                TestEncoderAll()
  .text._ZN10HalfBridgeC2Ev
-                0x0000000008001b9c       0x34 App/Tests/Src/test_half_bridge.o
+                0x0000000008001b9c       0x34 App/Test/Src/test_half_bridge.o
                 0x0000000008001b9c                HalfBridge::HalfBridge()
                 0x0000000008001b9c                HalfBridge::HalfBridge()
  .text._ZN9STSPIN830C2EP12GPIO_TypeDeftS1_tRKt
-                0x0000000008001bd0       0x64 App/Tests/Src/test_half_bridge.o
+                0x0000000008001bd0       0x64 App/Test/Src/test_half_bridge.o
                 0x0000000008001bd0                STSPIN830::STSPIN830(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short, unsigned short const&)
                 0x0000000008001bd0                STSPIN830::STSPIN830(GPIO_TypeDef*, unsigned short, GPIO_TypeDef*, unsigned short, unsigned short const&)
  .text._Z20TestHalfBridgeCreatev
-                0x0000000008001c34       0x54 App/Tests/Src/test_half_bridge.o
+                0x0000000008001c34       0x54 App/Test/Src/test_half_bridge.o
                 0x0000000008001c34                TestHalfBridgeCreate()
  .text._Z17TestHalfBridgeAllv
-                0x0000000008001c88       0x54 App/Tests/Src/test_half_bridge.o
+                0x0000000008001c88       0x54 App/Test/Src/test_half_bridge.o
                 0x0000000008001c88                TestHalfBridgeAll()
  .text.main     0x0000000008001cdc       0xa0 Core/Src/main.o
                 0x0000000008001cdc                main
@@ -8242,9 +8377,9 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  *(.rodata)
  .rodata        0x000000000800d190        0x6 App/Src/main_run.o
  *fill*         0x000000000800d196        0x2 
- .rodata        0x000000000800d198      0x65a App/Tests/Src/test_encoder.o
+ .rodata        0x000000000800d198      0x65a App/Test/Src/test_encoder.o
  *fill*         0x000000000800d7f2        0x2 
- .rodata        0x000000000800d7f4       0xc5 App/Tests/Src/test_half_bridge.o
+ .rodata        0x000000000800d7f4       0xc5 App/Test/Src/test_half_bridge.o
  *fill*         0x000000000800d8b9        0x3 
  .rodata        0x000000000800d8bc       0x11 Core/Src/main.o
  *fill*         0x000000000800d8cd        0x3 
@@ -8265,7 +8400,7 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .rodata._ZL15task1Attributes
                 0x000000000800d918       0x24 App/Src/main_run.o
  .rodata._ZTV10HalfBridge
-                0x000000000800d93c       0x10 App/Tests/Src/test_half_bridge.o
+                0x000000000800d93c       0x10 App/Test/Src/test_half_bridge.o
                 0x000000000800d93c                vtable for HalfBridge
  .rodata.defaultTask_attributes
                 0x000000000800d94c       0x24 Core/Src/main.o
@@ -8560,9 +8695,9 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .ARM.attributes
                 0x000000000000013a       0x39 App/Src/main_run.o
  .ARM.attributes
-                0x0000000000000173       0x39 App/Tests/Src/test_encoder.o
+                0x0000000000000173       0x39 App/Test/Src/test_encoder.o
  .ARM.attributes
-                0x00000000000001ac       0x39 App/Tests/Src/test_half_bridge.o
+                0x00000000000001ac       0x39 App/Test/Src/test_half_bridge.o
  .ARM.attributes
                 0x00000000000001e5       0x39 Core/Src/main.o
  .ARM.attributes
@@ -8745,8 +8880,8 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_info    0x0000000000002138      0x348 App/Motor/Src/half_bridge.o
  .debug_info    0x0000000000002480      0x6a8 App/Motor/Src/stspin830.o
  .debug_info    0x0000000000002b28     0x1292 App/Src/main_run.o
- .debug_info    0x0000000000003dba     0x11e7 App/Tests/Src/test_encoder.o
- .debug_info    0x0000000000004fa1     0x1356 App/Tests/Src/test_half_bridge.o
+ .debug_info    0x0000000000003dba     0x11e7 App/Test/Src/test_encoder.o
+ .debug_info    0x0000000000004fa1     0x1356 App/Test/Src/test_half_bridge.o
  .debug_info    0x00000000000062f7     0x29ee Core/Src/main.o
  .debug_info    0x0000000000008ce5     0x22e5 Core/Src/stm32f7xx_hal_msp.o
  .debug_info    0x000000000000afca      0xb9f Core/Src/stm32f7xx_hal_timebase_tim.o
@@ -8785,8 +8920,8 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_abbrev  0x0000000000000679      0x173 App/Motor/Src/half_bridge.o
  .debug_abbrev  0x00000000000007ec      0x258 App/Motor/Src/stspin830.o
  .debug_abbrev  0x0000000000000a44      0x233 App/Src/main_run.o
- .debug_abbrev  0x0000000000000c77      0x208 App/Tests/Src/test_encoder.o
- .debug_abbrev  0x0000000000000e7f      0x337 App/Tests/Src/test_half_bridge.o
+ .debug_abbrev  0x0000000000000c77      0x208 App/Test/Src/test_encoder.o
+ .debug_abbrev  0x0000000000000e7f      0x337 App/Test/Src/test_half_bridge.o
  .debug_abbrev  0x00000000000011b6      0x331 Core/Src/main.o
  .debug_abbrev  0x00000000000014e7      0x2a2 Core/Src/stm32f7xx_hal_msp.o
  .debug_abbrev  0x0000000000001789      0x19d Core/Src/stm32f7xx_hal_timebase_tim.o
@@ -8831,9 +8966,9 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000128       0x30 App/Src/main_run.o
  .debug_aranges
-                0x0000000000000158       0x48 App/Tests/Src/test_encoder.o
+                0x0000000000000158       0x48 App/Test/Src/test_encoder.o
  .debug_aranges
-                0x00000000000001a0       0x38 App/Tests/Src/test_half_bridge.o
+                0x00000000000001a0       0x38 App/Test/Src/test_half_bridge.o
  .debug_aranges
                 0x00000000000001d8       0x88 Core/Src/main.o
  .debug_aranges
@@ -8903,8 +9038,8 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_ranges  0x0000000000000098       0x38 App/Motor/Src/half_bridge.o
  .debug_ranges  0x00000000000000d0       0x18 App/Motor/Src/stspin830.o
  .debug_ranges  0x00000000000000e8       0x20 App/Src/main_run.o
- .debug_ranges  0x0000000000000108       0x38 App/Tests/Src/test_encoder.o
- .debug_ranges  0x0000000000000140       0x28 App/Tests/Src/test_half_bridge.o
+ .debug_ranges  0x0000000000000108       0x38 App/Test/Src/test_encoder.o
+ .debug_ranges  0x0000000000000140       0x28 App/Test/Src/test_half_bridge.o
  .debug_ranges  0x0000000000000168       0x78 Core/Src/main.o
  .debug_ranges  0x00000000000001e0       0x60 Core/Src/stm32f7xx_hal_msp.o
  .debug_ranges  0x0000000000000240       0x20 Core/Src/stm32f7xx_hal_timebase_tim.o
@@ -8937,7 +9072,7 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_ranges  0x0000000000001ac8       0x70 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
  .debug_ranges  0x0000000000001b38       0x40 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_macro    0x0000000000000000    0x29c83
+.debug_macro    0x0000000000000000    0x29c97
  .debug_macro   0x0000000000000000      0x29b App/Encoder/Src/as5048a.o
  .debug_macro   0x000000000000029b      0xb32 App/Encoder/Src/as5048a.o
  .debug_macro   0x0000000000000dcd       0x1c App/Encoder/Src/as5048a.o
@@ -9044,114 +9179,114 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_macro   0x0000000000023a3a       0x74 App/Src/main_run.o
  .debug_macro   0x0000000000023aae       0xdd App/Src/main_run.o
  .debug_macro   0x0000000000023b8b       0x4c App/Src/main_run.o
- .debug_macro   0x0000000000023bd7      0x3b8 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000023f8f       0x40 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000023fcf       0x94 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000024063       0x57 App/Tests/Src/test_encoder.o
- .debug_macro   0x00000000000240ba       0x97 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000024151      0x104 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000024255       0x46 App/Tests/Src/test_encoder.o
- .debug_macro   0x000000000002429b       0xd9 App/Tests/Src/test_encoder.o
- .debug_macro   0x0000000000024374       0x5b App/Tests/Src/test_encoder.o
- .debug_macro   0x00000000000243cf      0x3d9 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x00000000000247a8       0xe2 App/Tests/Src/test_half_bridge.o
- .debug_macro   0x000000000002488a      0x429 Core/Src/main.o
- .debug_macro   0x0000000000024cb3      0x399 Core/Src/stm32f7xx_hal_msp.o
- .debug_macro   0x000000000002504c      0x234 Core/Src/stm32f7xx_hal_timebase_tim.o
- .debug_macro   0x0000000000025280      0x3a3 Core/Src/stm32f7xx_it.o
- .debug_macro   0x0000000000025623      0x243 Core/Src/syscalls.o
- .debug_macro   0x0000000000025866      0x330 Core/Src/syscalls.o
- .debug_macro   0x0000000000025b96       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000025ba6       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000025bb6       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000025bc6       0x35 Core/Src/syscalls.o
- .debug_macro   0x0000000000025bfb      0x122 Core/Src/syscalls.o
- .debug_macro   0x0000000000025d1d       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000025d2d      0x241 Core/Src/syscalls.o
- .debug_macro   0x0000000000025f6e       0x1c Core/Src/syscalls.o
- .debug_macro   0x0000000000025f8a       0x10 Core/Src/syscalls.o
- .debug_macro   0x0000000000025f9a      0x189 Core/Src/syscalls.o
- .debug_macro   0x0000000000026123       0x16 Core/Src/syscalls.o
- .debug_macro   0x0000000000026139       0x88 Core/Src/syscalls.o
- .debug_macro   0x00000000000261c1       0xee Core/Src/sysmem.o
- .debug_macro   0x00000000000262af      0x23b Core/Src/sysmem.o
- .debug_macro   0x00000000000264ea      0x23a Core/Src/system_stm32f7xx.o
- .debug_macro   0x0000000000026724      0x258 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
- .debug_macro   0x000000000002697c      0x235 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
- .debug_macro   0x0000000000026bb1      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
- .debug_macro   0x0000000000026de5      0x23a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
- .debug_macro   0x000000000002701f      0x26a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
- .debug_macro   0x0000000000027289      0x240 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
- .debug_macro   0x00000000000274c9      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
- .debug_macro   0x00000000000276fd      0x252 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
- .debug_macro   0x000000000002794f      0x24c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
- .debug_macro   0x0000000000027b9b      0x258 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
- .debug_macro   0x0000000000027df3      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
- .debug_macro   0x0000000000028027      0x23c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
- .debug_macro   0x0000000000028263      0x235 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
- .debug_macro   0x0000000000028498      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
- .debug_macro   0x00000000000286cc      0x251 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
- .debug_macro   0x000000000002891d      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
- .debug_macro   0x0000000000028b51      0x23a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028d8b       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028d9b       0x20 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028dbb       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028dcb       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028e9e       0x91 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028f2f       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000028fbc       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000029056      0x17a Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_macro   0x00000000000291d0      0x209 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x00000000000293d9       0x16 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x00000000000293ef       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x0000000000029476      0x272 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x00000000000296e8       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x00000000000296f8      0x1cf Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x00000000000298c7       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x000000000002995e      0x184 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
- .debug_macro   0x0000000000029ae2      0x1a1 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_macro   0x0000000000023bd7      0x3c2 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000023f99       0x40 App/Test/Src/test_encoder.o
+ .debug_macro   0x0000000000023fd9       0x94 App/Test/Src/test_encoder.o
+ .debug_macro   0x000000000002406d       0x57 App/Test/Src/test_encoder.o
+ .debug_macro   0x00000000000240c4       0x97 App/Test/Src/test_encoder.o
+ .debug_macro   0x000000000002415b      0x104 App/Test/Src/test_encoder.o
+ .debug_macro   0x000000000002425f       0x46 App/Test/Src/test_encoder.o
+ .debug_macro   0x00000000000242a5       0xd9 App/Test/Src/test_encoder.o
+ .debug_macro   0x000000000002437e       0x5b App/Test/Src/test_encoder.o
+ .debug_macro   0x00000000000243d9      0x3e3 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x00000000000247bc       0xe2 App/Test/Src/test_half_bridge.o
+ .debug_macro   0x000000000002489e      0x429 Core/Src/main.o
+ .debug_macro   0x0000000000024cc7      0x399 Core/Src/stm32f7xx_hal_msp.o
+ .debug_macro   0x0000000000025060      0x234 Core/Src/stm32f7xx_hal_timebase_tim.o
+ .debug_macro   0x0000000000025294      0x3a3 Core/Src/stm32f7xx_it.o
+ .debug_macro   0x0000000000025637      0x243 Core/Src/syscalls.o
+ .debug_macro   0x000000000002587a      0x330 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025baa       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025bba       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025bca       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025bda       0x35 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025c0f      0x122 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025d31       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025d41      0x241 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025f82       0x1c Core/Src/syscalls.o
+ .debug_macro   0x0000000000025f9e       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000025fae      0x189 Core/Src/syscalls.o
+ .debug_macro   0x0000000000026137       0x16 Core/Src/syscalls.o
+ .debug_macro   0x000000000002614d       0x88 Core/Src/syscalls.o
+ .debug_macro   0x00000000000261d5       0xee Core/Src/sysmem.o
+ .debug_macro   0x00000000000262c3      0x23b Core/Src/sysmem.o
+ .debug_macro   0x00000000000264fe      0x23a Core/Src/system_stm32f7xx.o
+ .debug_macro   0x0000000000026738      0x258 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_macro   0x0000000000026990      0x235 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
+ .debug_macro   0x0000000000026bc5      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_macro   0x0000000000026df9      0x23a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
+ .debug_macro   0x0000000000027033      0x26a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_macro   0x000000000002729d      0x240 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
+ .debug_macro   0x00000000000274dd      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
+ .debug_macro   0x0000000000027711      0x252 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
+ .debug_macro   0x0000000000027963      0x24c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_macro   0x0000000000027baf      0x258 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_macro   0x0000000000027e07      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_macro   0x000000000002803b      0x23c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_macro   0x0000000000028277      0x235 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_macro   0x00000000000284ac      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_macro   0x00000000000286e0      0x251 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
+ .debug_macro   0x0000000000028931      0x234 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
+ .debug_macro   0x0000000000028b65      0x23a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028d9f       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028daf       0x20 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028dcf       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028ddf       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028eb2       0x91 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028f43       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x0000000000028fd0       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000002906a      0x17a Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_macro   0x00000000000291e4      0x209 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x00000000000293ed       0x16 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x0000000000029403       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x000000000002948a      0x272 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x00000000000296fc       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x000000000002970c      0x1cf Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x00000000000298db       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x0000000000029972      0x184 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
+ .debug_macro   0x0000000000029af6      0x1a1 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_line     0x0000000000000000    0x1b08d
+.debug_line     0x0000000000000000    0x1b0b2
  .debug_line    0x0000000000000000      0x8ef App/Encoder/Src/as5048a.o
  .debug_line    0x00000000000008ef      0x95d App/Encoder/Src/encoder.o
  .debug_line    0x000000000000124c      0x438 App/Motor/Src/half_bridge.o
  .debug_line    0x0000000000001684      0x7fd App/Motor/Src/stspin830.o
- .debug_line    0x0000000000001e81      0xb84 App/Src/main_run.o
- .debug_line    0x0000000000002a05      0xaf3 App/Tests/Src/test_encoder.o
- .debug_line    0x00000000000034f8      0xa4b App/Tests/Src/test_half_bridge.o
- .debug_line    0x0000000000003f43      0xcb4 Core/Src/main.o
- .debug_line    0x0000000000004bf7      0xaa2 Core/Src/stm32f7xx_hal_msp.o
- .debug_line    0x0000000000005699      0x7f9 Core/Src/stm32f7xx_hal_timebase_tim.o
- .debug_line    0x0000000000005e92      0xa3e Core/Src/stm32f7xx_it.o
- .debug_line    0x00000000000068d0      0x77a Core/Src/syscalls.o
- .debug_line    0x000000000000704a      0x503 Core/Src/sysmem.o
- .debug_line    0x000000000000754d      0x7de Core/Src/system_stm32f7xx.o
- .debug_line    0x0000000000007d2b       0x85 Core/Startup/startup_stm32f722zetx.o
- .debug_line    0x0000000000007db0      0x9ed Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
- .debug_line    0x000000000000879d      0xc16 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
- .debug_line    0x00000000000093b3      0xaee Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
- .debug_line    0x0000000000009ea1      0xa99 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
- .debug_line    0x000000000000a93a      0x9aa Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
- .debug_line    0x000000000000b2e4      0xd42 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
- .debug_line    0x000000000000c026      0x850 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
- .debug_line    0x000000000000c876      0x932 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
- .debug_line    0x000000000000d1a8      0x90e Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
- .debug_line    0x000000000000dab6      0xa63 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
- .debug_line    0x000000000000e519      0x9b6 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
- .debug_line    0x000000000000eecf     0x1240 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
- .debug_line    0x000000000001010f     0x1b0a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
- .debug_line    0x0000000000011c19      0xe75 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
- .debug_line    0x0000000000012a8e     0x1374 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
- .debug_line    0x0000000000013e02      0xef7 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
- .debug_line    0x0000000000014cf9     0x1e60 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_line    0x0000000000016b59      0x6ac Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_line    0x0000000000017205     0x1141 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_line    0x0000000000018346     0x1449 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_line    0x000000000001978f      0xabf Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_line    0x000000000001a24e      0x6ad Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
- .debug_line    0x000000000001a8fb      0x792 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_line    0x0000000000001e81      0xb83 App/Src/main_run.o
+ .debug_line    0x0000000000002a04      0xb04 App/Test/Src/test_encoder.o
+ .debug_line    0x0000000000003508      0xa60 App/Test/Src/test_half_bridge.o
+ .debug_line    0x0000000000003f68      0xcb4 Core/Src/main.o
+ .debug_line    0x0000000000004c1c      0xaa2 Core/Src/stm32f7xx_hal_msp.o
+ .debug_line    0x00000000000056be      0x7f9 Core/Src/stm32f7xx_hal_timebase_tim.o
+ .debug_line    0x0000000000005eb7      0xa3e Core/Src/stm32f7xx_it.o
+ .debug_line    0x00000000000068f5      0x77a Core/Src/syscalls.o
+ .debug_line    0x000000000000706f      0x503 Core/Src/sysmem.o
+ .debug_line    0x0000000000007572      0x7de Core/Src/system_stm32f7xx.o
+ .debug_line    0x0000000000007d50       0x85 Core/Startup/startup_stm32f722zetx.o
+ .debug_line    0x0000000000007dd5      0x9ed Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_line    0x00000000000087c2      0xc16 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
+ .debug_line    0x00000000000093d8      0xaee Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_line    0x0000000000009ec6      0xa99 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
+ .debug_line    0x000000000000a95f      0x9aa Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_line    0x000000000000b309      0xd42 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
+ .debug_line    0x000000000000c04b      0x850 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
+ .debug_line    0x000000000000c89b      0x932 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
+ .debug_line    0x000000000000d1cd      0x90e Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_line    0x000000000000dadb      0xa63 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_line    0x000000000000e53e      0x9b6 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_line    0x000000000000eef4     0x1240 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_line    0x0000000000010134     0x1b0a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_line    0x0000000000011c3e      0xe75 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_line    0x0000000000012ab3     0x1374 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
+ .debug_line    0x0000000000013e27      0xef7 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
+ .debug_line    0x0000000000014d1e     0x1e60 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_line    0x0000000000016b7e      0x6ac Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_line    0x000000000001722a     0x1141 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_line    0x000000000001836b     0x1449 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_line    0x00000000000197b4      0xabf Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_line    0x000000000001a273      0x6ad Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
+ .debug_line    0x000000000001a920      0x792 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_str      0x0000000000000000    0xf311a
+.debug_str      0x0000000000000000    0xf3115
  .debug_str     0x0000000000000000    0xdae39 App/Encoder/Src/as5048a.o
                                       0xdb65e (size before relaxing)
  .debug_str     0x00000000000dae39     0x541b App/Encoder/Src/encoder.o
@@ -9160,73 +9295,73 @@ OUTPUT(nucleo.elf elf32-littlearm)
                                        0x42d0 (size before relaxing)
  .debug_str     0x00000000000e0477      0x1a5 App/Motor/Src/stspin830.o
                                       0xdaf96 (size before relaxing)
- .debug_str     0x00000000000e061c     0x64b2 App/Src/main_run.o
-                                      0xe44fb (size before relaxing)
- .debug_str     0x00000000000e6ace      0x1b9 App/Tests/Src/test_encoder.o
-                                      0xdf5ca (size before relaxing)
- .debug_str     0x00000000000e6c87      0x173 App/Tests/Src/test_half_bridge.o
-                                      0xdfb99 (size before relaxing)
- .debug_str     0x00000000000e6dfa     0x16ed Core/Src/main.o
+ .debug_str     0x00000000000e061c     0x64af App/Src/main_run.o
+                                      0xe44f8 (size before relaxing)
+ .debug_str     0x00000000000e6acb      0x1b8 App/Test/Src/test_encoder.o
+                                      0xdf5e3 (size before relaxing)
+ .debug_str     0x00000000000e6c83      0x172 App/Test/Src/test_half_bridge.o
+                                      0xdfbb6 (size before relaxing)
+ .debug_str     0x00000000000e6df5     0x16ed Core/Src/main.o
                                       0xe50e9 (size before relaxing)
- .debug_str     0x00000000000e84e7       0xf7 Core/Src/stm32f7xx_hal_msp.o
+ .debug_str     0x00000000000e84e2       0xf7 Core/Src/stm32f7xx_hal_msp.o
                                       0xdff25 (size before relaxing)
- .debug_str     0x00000000000e85de       0xaa Core/Src/stm32f7xx_hal_timebase_tim.o
+ .debug_str     0x00000000000e85d9       0xaa Core/Src/stm32f7xx_hal_timebase_tim.o
                                       0xdb20d (size before relaxing)
- .debug_str     0x00000000000e8688       0xbe Core/Src/stm32f7xx_it.o
+ .debug_str     0x00000000000e8683       0xbe Core/Src/stm32f7xx_it.o
                                       0xdf1d1 (size before relaxing)
- .debug_str     0x00000000000e8746      0xf71 Core/Src/syscalls.o
+ .debug_str     0x00000000000e8741      0xf71 Core/Src/syscalls.o
                                        0x88a0 (size before relaxing)
- .debug_str     0x00000000000e96b7       0x6b Core/Src/sysmem.o
+ .debug_str     0x00000000000e96b2       0x6b Core/Src/sysmem.o
                                        0x5f6e (size before relaxing)
- .debug_str     0x00000000000e9722      0x18d Core/Src/system_stm32f7xx.o
+ .debug_str     0x00000000000e971d      0x18d Core/Src/system_stm32f7xx.o
                                       0xda8fb (size before relaxing)
- .debug_str     0x00000000000e98af       0x36 Core/Startup/startup_stm32f722zetx.o
+ .debug_str     0x00000000000e98aa       0x36 Core/Startup/startup_stm32f722zetx.o
                                          0x7b (size before relaxing)
- .debug_str     0x00000000000e98e5      0x33c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_str     0x00000000000e98e0      0x33c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
                                       0xdb11b (size before relaxing)
- .debug_str     0x00000000000e9c21      0x270 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
+ .debug_str     0x00000000000e9c1c      0x270 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.o
                                       0xdad9e (size before relaxing)
- .debug_str     0x00000000000e9e91      0x37f Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_str     0x00000000000e9e8c      0x37f Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
                                       0xdb1c2 (size before relaxing)
- .debug_str     0x00000000000ea210      0x320 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
+ .debug_str     0x00000000000ea20b      0x320 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o
                                       0xdac35 (size before relaxing)
- .debug_str     0x00000000000ea530      0x236 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_str     0x00000000000ea52b      0x236 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
                                       0xdaad1 (size before relaxing)
- .debug_str     0x00000000000ea766      0x530 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
+ .debug_str     0x00000000000ea761      0x530 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.o
                                       0xdafe0 (size before relaxing)
- .debug_str     0x00000000000eac96      0x16d Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
+ .debug_str     0x00000000000eac91      0x16d Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.o
                                       0xdac08 (size before relaxing)
- .debug_str     0x00000000000eae03      0x2c5 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
+ .debug_str     0x00000000000eadfe      0x2c5 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o
                                       0xdabb3 (size before relaxing)
- .debug_str     0x00000000000eb0c8      0x1bd Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_str     0x00000000000eb0c3      0x1bd Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
                                       0xdab75 (size before relaxing)
- .debug_str     0x00000000000eb285      0x26a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_str     0x00000000000eb280      0x26a Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
                                       0xdac1d (size before relaxing)
- .debug_str     0x00000000000eb4ef      0x159 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_str     0x00000000000eb4ea      0x159 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
                                       0xdab9d (size before relaxing)
- .debug_str     0x00000000000eb648      0x56c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_str     0x00000000000eb643      0x56c Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
                                       0xdb0b5 (size before relaxing)
- .debug_str     0x00000000000ebbb4      0xcab Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_str     0x00000000000ebbaf      0xcab Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
                                       0xdb987 (size before relaxing)
- .debug_str     0x00000000000ec85f      0x504 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_str     0x00000000000ec85a      0x504 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
                                       0xdb1da (size before relaxing)
- .debug_str     0x00000000000ecd63      0x7d0 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
+ .debug_str     0x00000000000ecd5e      0x7d0 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.o
                                       0xdb45a (size before relaxing)
- .debug_str     0x00000000000ed533      0x671 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
+ .debug_str     0x00000000000ed52e      0x671 Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.o
                                       0xdb12c (size before relaxing)
- .debug_str     0x00000000000edba4     0x28d4 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x00000000000edb9f     0x28d4 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
                                        0xe35e (size before relaxing)
- .debug_str     0x00000000000f0478      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x00000000000f0473      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
                                        0xa67f (size before relaxing)
- .debug_str     0x00000000000f05a5      0x92e Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x00000000000f05a0      0x92e Middlewares/Third_Party/FreeRTOS/Source/queue.o
                                        0xbfde (size before relaxing)
- .debug_str     0x00000000000f0ed3     0x1269 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x00000000000f0ece     0x1269 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
                                        0xcb15 (size before relaxing)
- .debug_str     0x00000000000f213c      0x60b Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x00000000000f2137      0x60b Middlewares/Third_Party/FreeRTOS/Source/timers.o
                                        0xc55b (size before relaxing)
- .debug_str     0x00000000000f2747      0x782 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
+ .debug_str     0x00000000000f2742      0x782 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/port.o
                                        0x83c7 (size before relaxing)
- .debug_str     0x00000000000f2ec9      0x251 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_str     0x00000000000f2ec4      0x251 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
                                        0xae72 (size before relaxing)
 
 .comment        0x0000000000000000       0x7b
@@ -9236,8 +9371,8 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .comment       0x000000000000007b       0x7c App/Motor/Src/half_bridge.o
  .comment       0x000000000000007b       0x7c App/Motor/Src/stspin830.o
  .comment       0x000000000000007b       0x7c App/Src/main_run.o
- .comment       0x000000000000007b       0x7c App/Tests/Src/test_encoder.o
- .comment       0x000000000000007b       0x7c App/Tests/Src/test_half_bridge.o
+ .comment       0x000000000000007b       0x7c App/Test/Src/test_encoder.o
+ .comment       0x000000000000007b       0x7c App/Test/Src/test_half_bridge.o
  .comment       0x000000000000007b       0x7c Core/Src/main.o
  .comment       0x000000000000007b       0x7c Core/Src/stm32f7xx_hal_msp.o
  .comment       0x000000000000007b       0x7c Core/Src/stm32f7xx_hal_timebase_tim.o
@@ -9275,8 +9410,8 @@ OUTPUT(nucleo.elf elf32-littlearm)
  .debug_frame   0x000000000000029c      0x100 App/Motor/Src/half_bridge.o
  .debug_frame   0x000000000000039c       0x5c App/Motor/Src/stspin830.o
  .debug_frame   0x00000000000003f8       0x68 App/Src/main_run.o
- .debug_frame   0x0000000000000460      0x100 App/Tests/Src/test_encoder.o
- .debug_frame   0x0000000000000560       0xa4 App/Tests/Src/test_half_bridge.o
+ .debug_frame   0x0000000000000460      0x100 App/Test/Src/test_encoder.o
+ .debug_frame   0x0000000000000560       0xa4 App/Test/Src/test_half_bridge.o
  .debug_frame   0x0000000000000604      0x1dc Core/Src/main.o
  .debug_frame   0x00000000000007e0      0x1a4 Core/Src/stm32f7xx_hal_msp.o
  .debug_frame   0x0000000000000984       0x74 Core/Src/stm32f7xx_hal_timebase_tim.o

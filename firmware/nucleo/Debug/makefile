@@ -15,8 +15,9 @@ RM := rm -rf
 -include Drivers/STM32F7xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include App/Tests/Src/subdir.mk
+-include App/Test/Src/subdir.mk
 -include App/Src/subdir.mk
+-include App/PIDController/Src/subdir.mk
 -include App/Motor/Src/subdir.mk
 -include App/Encoder/Src/subdir.mk
 -include subdir.mk

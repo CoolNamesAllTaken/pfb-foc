@@ -47,8 +47,8 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- ../App/Tests/Inc/test_framework.hh ../App/Tests/Inc/test_encoder.hh \
- ../App/Tests/Inc/test_half_bridge.hh
+ ../App/Test/Inc/test_framework.hh ../App/Test/Inc/test_encoder.hh \
+ ../App/Test/Inc/test_half_bridge.hh
 
 ../Core/Inc/main.h:
 
@@ -148,8 +148,8 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 
-../App/Tests/Inc/test_framework.hh:
+../App/Test/Inc/test_framework.hh:
 
-../App/Tests/Inc/test_encoder.hh:
+../App/Test/Inc/test_encoder.hh:
 
-../App/Tests/Inc/test_half_bridge.hh:
+../App/Test/Inc/test_half_bridge.hh:

@@ -1,3 +1,0 @@
-encoder.cc:13:6:void Encoder::set_zero_angle()	16	static
-encoder.cc:21:6:void Encoder::set_zero_angle(uint16_t)	16	static
-encoder.cc:29:10:uint16_t Encoder::get_angle()	16	static

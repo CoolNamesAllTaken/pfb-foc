@@ -1,3 +1,0 @@
-as5048a.cc:6:1:AS5048A::AS5048A(SPI_HandleTypeDef*)	16	static
-as5048a.cc:13:6:virtual void AS5048A::Init()	16	static
-as5048a.cc:20:6:virtual void AS5048A::Update()	16	static

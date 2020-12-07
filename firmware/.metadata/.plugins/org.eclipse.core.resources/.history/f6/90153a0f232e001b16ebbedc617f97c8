@@ -1,3 +1,0 @@
-main_run.cc:34:5:int main_run()	8	static
-main_run.cc:42:6:void startTask1(void*)	24	static
-main_run.cc:52:6:void RunAllTests()	4	static

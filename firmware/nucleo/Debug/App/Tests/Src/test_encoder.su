@@ -1,6 +1,0 @@
-test_encoder.cc:19:6:bool TestEncoderCreate()	56	static
-test_encoder.cc:35:6:bool TestEncoderZero()	80	static
-test_encoder.cc:63:6:bool TestEncoderAngle()	80	static
-test_encoder.cc:91:6:bool TestAS5048AParity()	56	static
-test_encoder.cc:133:6:bool TestAS5048APackets()	64	static
-test_encoder.cc:235:6:void TestEncoderAll()	16	static

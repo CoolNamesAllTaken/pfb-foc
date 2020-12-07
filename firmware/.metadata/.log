@@ -1162,3 +1162,25 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/jkail
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-11-28 01:45:12.063
 !MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-12-06 13:17:30.068
+!MESSAGE Indexed 'nucleo' (50 sources, 241 headers) in 8.65 sec: 22,130 declarations; 90,240 references; 2 unresolved inclusions; 282 syntax errors; 933 unresolved names (0.82%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-12-06 13:29:29.426
+!MESSAGE Indexed 'nucleo' (50 sources, 242 headers) in 6.12 sec: 22,145 declarations; 90,245 references; 2 unresolved inclusions; 282 syntax errors; 933 unresolved names (0.82%)
+!SESSION 2020-12-06 13:42:56.121 -----------------------------------------------
+eclipse.buildId=Version 1.5.0
+java.version=1.8.0_272
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jkailimcnelly/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/jkailimcnelly/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-12-06 13:43:05.881
+!MESSAGE Log4j initialized with config file /Users/jkailimcnelly/Box Sync/Projects/pfb-foc/firmware/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-12-06 13:43:14.539
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-12-06 13:43:14.966
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties

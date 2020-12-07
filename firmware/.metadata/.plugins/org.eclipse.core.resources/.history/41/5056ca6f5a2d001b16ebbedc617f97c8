@@ -1,6 +1,0 @@
-#include <main.h>
-
-int main_run() {
-
-	return 1;
-}

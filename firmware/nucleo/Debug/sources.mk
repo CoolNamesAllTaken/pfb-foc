@@ -31,8 +31,9 @@ CPP_DEPS :=
 SUBDIRS := \
 App/Encoder/Src \
 App/Motor/Src \
+App/PIDController/Src \
 App/Src \
-App/Tests/Src \
+App/Test/Src \
 Core/Src \
 Core/Startup \
 Drivers/STM32F7xx_HAL_Driver/Src \

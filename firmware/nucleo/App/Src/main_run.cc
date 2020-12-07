@@ -3,9 +3,9 @@
 
 #define RUN_TESTS
 #ifdef RUN_TESTS
-#include "test_framework.hh"
-#include "test_encoder.hh"
-#include "test_half_bridge.hh"
+#include <Test/Inc/test_framework.hh>
+#include <Test/Inc/test_encoder.hh>
+#include <Test/Inc/test_half_bridge.hh>
 #endif
 
 /* Constants */
