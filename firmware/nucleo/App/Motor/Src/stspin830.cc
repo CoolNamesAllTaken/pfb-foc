@@ -28,8 +28,8 @@ uint32_t GetTickMicros() {
  */
 void STSPIN830::Init() {
 	pid_last_update_us = GetTickMicros(); // enable time intervals to be passed to PID controller
-
 	HAL_TIM_PWM_Start(timer_, timer_channel_id_); // get the party started
+	HAL_TIMEx_PWMN_Start(timer_, timer_channel_id_); // get the (complementary) party started
 }
 
 /**
