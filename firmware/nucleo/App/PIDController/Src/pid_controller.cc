@@ -27,6 +27,10 @@ PIDController::PIDController(float k_p_in, float k_i_in, float k_d_in, const flo
  * integrating error in the error accumulator.
  */
 void PIDController::Update(float ms_since_last_update) {
+	if (ms_since_last_update < 0) {
+		return; // only allow updates with positive time steps (avoid errors for i, d)
+	}
+
 	// Populate circular error memory buffer with integrated chunk of previous error.
 	float prev_error = error_;
 	error_mem_[error_mem_index_] = prev_error  * ms_since_last_update;
@@ -39,12 +43,19 @@ void PIDController::Update(float ms_since_last_update) {
 	error_ = state - target; // calculate current error
 
 	// Integral Error.
-	float cum_prev_error = 0;
+	float i_error = 0;
 	for (uint16_t i = 0; i < error_mem_depth_; i++) {
-		cum_prev_error += error_mem_[i];
+		i_error += error_mem_[i];
 	}
 
-	output_ = k_p * (error_) + k_i * cum_prev_error + k_d * (error_ - prev_error);
+	// Derivative Error.
+	float d_error = 0;
+	if (ms_since_last_update > 0) {
+		// avoid yuge spike during controller reset
+		d_error = (error_ - prev_error) / ms_since_last_update;
+	}
+
+	output_ = k_p * (error_) + k_i * i_error + k_d * d_error;
 }
 
 /**

@@ -56,8 +56,9 @@ void startTask1(void * argument) {
 #ifdef RUN_TESTS
 void RunAllTests() {
 	TestEncoderAll();
-	TestHalfBridgeAll();
 	TestPIDControllerAll();
+	TestHalfBridgeAll();
+
 }
 #endif
 

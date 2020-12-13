@@ -34,7 +34,7 @@ public:
 	void set_op_mode(OpMode op_mode);
 	OpMode get_op_mode();
 
-private:
+protected:
 	uint16_t target_current_{0}; // [mA]
 	uint16_t current_limit_{0}; // [mA]
 

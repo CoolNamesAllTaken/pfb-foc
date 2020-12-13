@@ -22,18 +22,28 @@
 #define CURR_FB_W ADC1_IN8
 
 /**
+ * Pin Mapping
+ *
+ * ENU = PB13	TIM1_CH1N
+ * ENV = PB14	TIM1_CH2N
+ * ENW = PB15	TIM1_CH3N
+ *
+ * INU = PA8	TIM1_CH1
+ * INV = PA9	TIM1_CH2
+ * INW = PA10	TIM1_CH3
+ */
+
+/**
  * Test Setup Instructions
  */
 
 bool TestHalfBridgeCreate() {
-	GPIO_TypeDef * dummy_gpio_port = NULL;
-	uint16_t dummy_gpio_pin = 0;
+	TIM_HandleTypeDef * dummy_timer = NULL;
+	uint32_t dummy_timer_id = 0;
 	uint16_t adc_buf[1];
 	STSPIN830 half_bridge(
-			dummy_gpio_port,
-			dummy_gpio_pin,
-			dummy_gpio_port,
-			dummy_gpio_pin,
+			dummy_timer,
+			dummy_timer_id,
 			adc_buf[0]);
 
 	if (half_bridge.get_op_mode() != HalfBridge::OFF) {
@@ -43,11 +53,26 @@ bool TestHalfBridgeCreate() {
 	return true;
 }
 
+bool TestHalfBridgeHardware() {
+	STSPIN830 half_bridge(
+			half_bridge_pwm_timer,  // PWM timer
+			TIM_CHANNEL_1,			// PWM timer channel
+			curr_sense_adc_buf[0] /* curr_sense_adc_voltage */);
+	half_bridge.Init();
+	half_bridge.set_target_current(10); // [10mA]
+	while(true) {
+		half_bridge.Update();
+	}
+}
+
 
 void TestHalfBridgeAll() {
 	L_PRINT("Test HalfBridge Class");
 	bool hb_passed = true;
 	hb_passed &= TestHalfBridgeCreate();
+#ifdef HARDWARE_TEST
+	hb_passed &= TestHalfBridgeHardware();
+#endif
 	if (hb_passed) {
 		PASS_PRINT("HalfBridge Class\r\n");
 	} else {

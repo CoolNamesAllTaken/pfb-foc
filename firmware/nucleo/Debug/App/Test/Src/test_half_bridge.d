@@ -38,7 +38,8 @@ App/Test/Src/test_half_bridge.o: ../App/Test/Src/test_half_bridge.cc \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
- ../App/Motor/Inc/half_bridge.hh ../Core/Inc/main.h
+ ../App/Motor/Inc/half_bridge.hh \
+ ../App/PIDController/Inc/pid_controller.hh ../Core/Inc/main.h
 
 ../App/Test/Inc/test_framework.hh:
 
@@ -121,5 +122,7 @@ App/Test/Src/test_half_bridge.o: ../App/Test/Src/test_half_bridge.cc \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h:
 
 ../App/Motor/Inc/half_bridge.hh:
+
+../App/PIDController/Inc/pid_controller.hh:
 
 ../Core/Inc/main.h:

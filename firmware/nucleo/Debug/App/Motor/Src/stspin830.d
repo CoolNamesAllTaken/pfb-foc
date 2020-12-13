@@ -37,7 +37,8 @@ App/Motor/Src/stspin830.o: ../App/Motor/Src/stspin830.cc \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
- ../App/Motor/Inc/half_bridge.hh
+ ../App/Motor/Inc/half_bridge.hh \
+ ../App/PIDController/Inc/pid_controller.hh
 
 ../App/Motor/Inc/stspin830.hh:
 
@@ -116,3 +117,5 @@ App/Motor/Src/stspin830.o: ../App/Motor/Src/stspin830.cc \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h:
 
 ../App/Motor/Inc/half_bridge.hh:
+
+../App/PIDController/Inc/pid_controller.hh:

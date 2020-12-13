@@ -130,7 +130,7 @@ bool TestPIDControllerResponse() {
 	state = -487.3;
 	pid.target = 22;
 	pid.Update(10);
-	expect_output = (-487.3 - 22) * 13.5;
+	expect_output = (-487.3 - 22) * 13.5 / 10;
 	if (pid.get_output() != expect_output) {
 		T_FAIL_PRINT("Failed k_d Test #1, expected output %f but got %f.\r\n",
 				expect_output, pid.get_output());

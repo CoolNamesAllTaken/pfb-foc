@@ -43,7 +43,8 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 extern SPI_HandleTypeDef * encoder_hspi; // make available for talking to encoder
-extern volatile uint16_t hadc1_buf[];
+extern volatile uint16_t curr_sense_adc_buf[];
+extern TIM_HandleTypeDef * half_bridge_pwm_timer; // make available for motor half-bridge PWM
 
 /* USER CODE END EC */
 
@@ -51,6 +52,8 @@ extern volatile uint16_t hadc1_buf[];
 /* USER CODE BEGIN EM */
 
 /* USER CODE END EM */
+
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
@@ -65,10 +68,20 @@ int main_run();
 #define USER_Btn_GPIO_Port GPIOC
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOH
+#define CURR_FB_U_Pin GPIO_PIN_1
+#define CURR_FB_U_GPIO_Port GPIOA
 #define ENC_SPI_CS_Pin GPIO_PIN_4
 #define ENC_SPI_CS_GPIO_Port GPIOA
-#define LD3_Pin GPIO_PIN_14
-#define LD3_GPIO_Port GPIOB
+#define CURR_FB_V_Pin GPIO_PIN_7
+#define CURR_FB_V_GPIO_Port GPIOA
+#define CURR_FB_W_Pin GPIO_PIN_0
+#define CURR_FB_W_GPIO_Port GPIOB
+#define ENU_Pin GPIO_PIN_13
+#define ENU_GPIO_Port GPIOB
+#define ENV_Pin GPIO_PIN_14
+#define ENV_GPIO_Port GPIOB
+#define ENW_Pin GPIO_PIN_15
+#define ENW_GPIO_Port GPIOB
 #define STLK_RX_Pin GPIO_PIN_8
 #define STLK_RX_GPIO_Port GPIOD
 #define STLK_TX_Pin GPIO_PIN_9
@@ -77,12 +90,12 @@ int main_run();
 #define USB_PowerSwitchOn_GPIO_Port GPIOG
 #define USB_OverCurrent_Pin GPIO_PIN_7
 #define USB_OverCurrent_GPIO_Port GPIOG
-#define USB_SOF_Pin GPIO_PIN_8
-#define USB_SOF_GPIO_Port GPIOA
-#define USB_VBUS_Pin GPIO_PIN_9
-#define USB_VBUS_GPIO_Port GPIOA
-#define USB_ID_Pin GPIO_PIN_10
-#define USB_ID_GPIO_Port GPIOA
+#define INU_Pin GPIO_PIN_8
+#define INU_GPIO_Port GPIOA
+#define INV_Pin GPIO_PIN_9
+#define INV_GPIO_Port GPIOA
+#define INW_Pin GPIO_PIN_10
+#define INW_GPIO_Port GPIOA
 #define USB_DM_Pin GPIO_PIN_11
 #define USB_DM_GPIO_Port GPIOA
 #define USB_DP_Pin GPIO_PIN_12
