@@ -31,7 +31,7 @@ void PIDController::Update(float ms_since_last_update) {
 		return; // only allow updates with positive time steps (avoid errors for i, d)
 	}
 
-	// Populate circular error memory buffer with integrated chunk of previous error.
+	// Populate circular error memory buffer with integrated chunk of previous error
 	float prev_error = error_;
 	error_mem_[error_mem_index_] = prev_error  * ms_since_last_update;
 	error_mem_index_++;
@@ -39,16 +39,19 @@ void PIDController::Update(float ms_since_last_update) {
 		error_mem_index_ = 0; // wrap error memory index
 	}
 
-	// Proportional Error.
+	// Proportional Error
 	error_ = state - target; // calculate current error
 
-	// Integral Error.
+	// Integral Error
 	float i_error = 0;
-	for (uint16_t i = 0; i < error_mem_depth_; i++) {
-		i_error += error_mem_[i];
+	if (k_i != 0) {
+		// skip integration if it's not being used
+		for (uint16_t i = 0; i < error_mem_depth_; i++) {
+			i_error += error_mem_[i];
+		}
 	}
 
-	// Derivative Error.
+	// Derivative Error
 	float d_error = 0;
 	if (ms_since_last_update > 0) {
 		// avoid yuge spike during controller reset

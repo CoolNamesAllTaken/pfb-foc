@@ -12,7 +12,7 @@
 #define protected public
 #include "stspin830.hh"
 
-#define HARDWARE_TEST
+//#define HARDWARE_TEST
 #ifdef HARDWARE_TEST
 #include "main.h"
 #endif
@@ -53,6 +53,7 @@ bool TestHalfBridgeCreate() {
 	return true;
 }
 
+#ifdef HARDWARE_TEST
 bool TestHalfBridgeHardware() {
 	STSPIN830 half_bridge(
 			half_bridge_pwm_timer,  // PWM timer
@@ -64,6 +65,7 @@ bool TestHalfBridgeHardware() {
 		half_bridge.Update();
 	}
 }
+#endif
 
 
 void TestHalfBridgeAll() {

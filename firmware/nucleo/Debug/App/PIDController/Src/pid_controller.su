@@ -1,4 +1,4 @@
 pid_controller.cc:17:1:PIDController::PIDController(float, float, float, const float&)	32	static
 pid_controller.cc:29:6:void PIDController::Update(float)	32	static
-pid_controller.cc:64:6:void PIDController::Reset()	24	static
-pid_controller.cc:72:7:float PIDController::get_output()	16	static
+pid_controller.cc:67:6:void PIDController::Reset()	24	static
+pid_controller.cc:75:7:float PIDController::get_output()	16	static

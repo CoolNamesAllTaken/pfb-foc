@@ -17,13 +17,15 @@ private:
 	TIM_HandleTypeDef * timer_;
 	uint32_t timer_channel_id_;
 
-	const volatile uint16_t& curr_sense_adc_voltage_;
-	uint16_t current_ma_{0};
+	const volatile uint16_t& curr_sense_adc_counts_;
+	float current_ma_{0}; // current flowing to GND via sense resistor (bottom side Id)
 
 	uint32_t pid_last_update_us{0};
 	float duty_cycle_{0};
 
 	const uint16_t kADCMax{0xFFFF};
+
+	bool is_initialized_{false};
 
 public:
 	PIDController pid;
@@ -44,8 +46,8 @@ public:
 			const volatile uint16_t& curr_sense_adc_voltage)
 		: timer_(timer)
 		, timer_channel_id_(timer_channel_id)
-		, curr_sense_adc_voltage_(curr_sense_adc_voltage)
-		, pid(0.01, 0, 0.001, current_ma_){};
+		, curr_sense_adc_counts_(curr_sense_adc_voltage)
+		, pid(0.0005, 0.0, 0.000001, current_ma_){};
 
 	void Init();
 	void Update();
