@@ -2,5 +2,5 @@ half_bridge.hh:23:2:HalfBridge::HalfBridge()	16	static
 stspin830.hh:43:2:STSPIN830::STSPIN830(TIM_HandleTypeDef*, uint32_t, const volatile uint16_t&)	24	static
 main_run.cc:62:5:int main_run()	8	static
 main_run.cc:81:6:void startTask1(void*)	24	static
-main_run.cc:95:6:void StartCurrentControlTask(void*)	24	static
-main_run.cc:105:6:void RunAllTests()	8	static
+main_run.cc:95:6:void StartCurrentControlTask(void*)	16	static
+main_run.cc:108:6:void RunAllTests()	8	static

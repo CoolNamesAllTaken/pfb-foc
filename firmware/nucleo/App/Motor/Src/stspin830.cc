@@ -9,13 +9,13 @@
 
 /* Private Constants */
 const uint16_t kADCMaxCounts = 0xFFFF>>4; // 12-bit ADC value
-const float kADCMaxVolts = 3.3; // [V] VDD rail of current sense ADCs
-const float kADCOffsetVolts = 1.56; // [V] ADC offset voltage (from IHM16M1 datasheet)
-const float kADCGain = 1.53 * 0.33; // [Ohms] Gain of current sense op-amp * sense resistor value
+const float kADCMaxVolts = 3.3f; // [V] VDD rail of current sense ADCs
+const float kADCOffsetVolts = 1.56f; // [V] ADC offset voltage (from IHM16M1 datasheet)
+const float kADCGain = 1.53f * 0.33f; // [Ohms] Gain of current sense op-amp * sense resistor value
 
 const uint16_t kPulseMax = 10000; // maximum counts for timer PWM pulse length
-const float kDutyCycleMax = 1.0; // max value of D
-const float kDutyCycleMin = 0.1; // allow current measurement during D
+const float kDutyCycleMax = 1.0f; // max value of D
+const float kDutyCycleMin = 0.1f; // allow current measurement during D
 
 /**
  * Utility function that returns the current time in microseconds.
@@ -50,7 +50,7 @@ void STSPIN830::Update() {
 	// Update target current
 	pid.target = target_current_;
 	uint32_t curr_time_us = GetTickMicros();
-	pid.Update((curr_time_us - pid_last_update_us) / 1000.0);
+	pid.Update((curr_time_us - pid_last_update_us) / 1000.0f);
 	pid_last_update_us = curr_time_us;
 	// Calculate duty cycle for closed loop control
 	duty_cycle_ -= pid.get_output();

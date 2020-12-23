@@ -11,7 +11,7 @@
  * @brief Sets the target current of the half-bridge.
  * @param[in] target_current Target current, in milliamps.
  */
-void HalfBridge::set_target_current(uint16_t target_current) {
+void HalfBridge::set_target_current(float target_current) {
 	target_current_ = target_current;
 }
 
@@ -19,7 +19,7 @@ void HalfBridge::set_target_current(uint16_t target_current) {
  * @brief Returns the target current of the half-bridge.
  * @retval Target current, in milliamps.
  */
-uint16_t HalfBridge::get_target_current() {
+float HalfBridge::get_target_current() {
 	return target_current_;
 }
 
@@ -27,7 +27,7 @@ uint16_t HalfBridge::get_target_current() {
  * @brief Set the current limit, which, if exceeded, will turn the half-bridge off and enter the FAULT state.
  * @param[in] current_limit Current limit in milliamps.
  */
-void HalfBridge::set_current_limit(uint16_t current_limit) {
+void HalfBridge::set_current_limit(float current_limit) {
 	current_limit_ = current_limit;
 }
 
@@ -35,7 +35,7 @@ void HalfBridge::set_current_limit(uint16_t current_limit) {
  * @brief Returns the current limit, which, if exceeded, will turn the half-bridge off and ener the FAULT state.
  * @retval Current limit in milliamps.
  */
-uint16_t HalfBridge::get_current_limit() {
+float HalfBridge::get_current_limit() {
 	return current_limit_;
 }
 

@@ -35,12 +35,12 @@ const osThreadAttr_t task1Attributes = {
 	0 									// reserved = reserved (must be 0)
 };
 
-const uint32_t current_control_task_freq = 1000; // [Hz]
+const uint32_t current_control_task_freq = 20000; // [Hz]
 const osThreadAttr_t current_control_task_attrs = {
 	"current_control_task", 			// cost char * name = name of the thread
 	0, 									// uint32_t attr_bits = attribute bits
 	osThreadDetached, 					// void * cb_mem = memory for control block
-	0, 							// uint32_t cb_size = size of provided memory for control block
+	0, 									// uint32_t cb_size = size of provided memory for control block
 	NULL, 								// void * stack_mem = memory for stack
 	0, 									// uint32_t stack_size = size of stack
 	(osPriority_t) osPriorityHigh7, 	// osPriority_t priority = initial thread priority (default: osPriorityNormal)
@@ -93,11 +93,14 @@ void startTask1(void * argument) {
 }
 
 void StartCurrentControlTask(void * argument) {
-	uint32_t osTickFreq = osKernelGetTickFreq();
+//	uint32_t osTickFreq = osKernelGetTickFreq();
 	while (1) {
-		uint32_t osTickCount = osKernelGetTickCount();
+//		uint32_t osTickCount = osKernelGetTickCount();
+		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
 		g_half_bridge->Update();
-		osDelayUntil(osTickCount + osTickFreq / current_control_task_freq);
+		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // wait indefinitely for run notification, clear notifications (set to 0) upon receiving one
+//		osDelayUntil(osTickCount + osTickFreq / current_control_task_freq);
 	}
 }
 

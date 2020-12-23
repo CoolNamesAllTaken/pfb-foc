@@ -25,18 +25,18 @@ public:
 	virtual void Init() = 0;
 	virtual void Update() = 0; // must be called with HIGH FREQUENCY for current limiting
 
-	void set_target_current(uint16_t new_target_current);
-	uint16_t get_target_current();
+	void set_target_current(float new_target_current);
+	float get_target_current();
 
-	void set_current_limit(uint16_t current_limit);
-	uint16_t get_current_limit();
+	void set_current_limit(float current_limit);
+	float get_current_limit();
 
 	void set_op_mode(OpMode op_mode);
 	OpMode get_op_mode();
 
 protected:
-	uint16_t target_current_{0}; // [mA]
-	uint16_t current_limit_{0}; // [mA]
+	float target_current_{0}; // [mA]
+	float current_limit_{0}; // [mA]
 
 	OpMode op_mode_{OFF};
 
