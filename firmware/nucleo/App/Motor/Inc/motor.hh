@@ -9,12 +9,17 @@
 #define MOTOR_INC_MOTOR_HH_
 
 #include "stm32f7xx_hal.h"
+#include "stdint.h"
 #include "half_bridge.hh"
 #include "pid_controller.hh"
 #include "Encoder.hh"
 
 class Motor {
 public:
+	struct MotorConfig_t {
+		uint16_t current_limit{0}; // [mA] current limit (max magnitude of i_dq vector)
+	};
+
 	/**
 	 * @brief Constructor for Motor object.
 	 * @param[in] u_bridge HalfBridge for phase U.
@@ -35,11 +40,30 @@ public:
 	void Init();
 	void Update();
 
+	void SetTorque(float torque);
+	void SetVelocity(float velocity);
+	void SetPosition(float angle);
+
 private:
 	HalfBridge& u_bridge_;
 	HalfBridge& v_bridge_;
 	HalfBridge& w_bridge_;
 	Encoder& enc_;
+
+	float theta{0}; // target encoder angle
+
+	// Time invariant currents
+	float i_d_{0}; // direct current component in rotor reference frame
+	float i_q_{0}; // quadrature current component in rotor reference frame
+
+	// Stator currents
+	float i_u_{0}; // phase U current (flowing to GND)
+	float i_v_{0}; // phase V current (flowing to GND)
+	float i_w_{0}; // phase W current (flowing to GND)
+
+	void ControlTorque();
+	void ControlVelocity();
+	void ControlPosition();
 };
 
 

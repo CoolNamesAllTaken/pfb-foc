@@ -51,9 +51,7 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../App/Test/Inc/test_half_bridge.hh \
  ../App/Test/Inc/test_pid_controller.hh ../App/Motor/Inc/stspin830.hh \
  ../App/Motor/Inc/half_bridge.hh \
- ../App/PIDController/Inc/pid_controller.hh \
- ../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
- ../Drivers/CMSIS/Include/cmsis_compiler.h
+ ../App/PIDController/Inc/pid_controller.hh
 
 ../Core/Inc/main.h:
 
@@ -166,7 +164,3 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 ../App/Motor/Inc/half_bridge.hh:
 
 ../App/PIDController/Inc/pid_controller.hh:
-
-../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
-
-../Drivers/CMSIS/Include/cmsis_compiler.h:

@@ -47,6 +47,7 @@ void STSPIN830::Update() {
 	// Calculate current
 	float curr_sense_adc_voltage = static_cast<float>(curr_sense_adc_counts_) / kADCMaxCounts * kADCMaxVolts;
 	current_ma_ = (curr_sense_adc_voltage - kADCOffsetVolts) / kADCGain * 1000;
+	// TODO: set break bit for the PWM if current too large, enter FAULT state
 	// Update target current
 	pid.target = target_current_;
 	uint32_t curr_time_us = GetTickMicros();

@@ -18,7 +18,7 @@ public:
 		HIGH_SIDE_ON, // lock high side of half-bridge ON, low side OFF
 		CURR_LIMIT, // control current through half-bridge with PWM
 		FAULT // overcurrent or other event has occurred, half-bridge disabled
-	};
+	}; // TODO: get rid of unused states, maybe make things better overall, update states regularly
 
 	HalfBridge() {} // abstract class due to pure virtual functions: constructor does nothing
 

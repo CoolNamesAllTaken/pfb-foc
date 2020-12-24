@@ -1,0 +1,2 @@
+motor.cc:12:6:void Motor::Init()	16	static
+motor.cc:19:6:void Motor::Update()	16	static

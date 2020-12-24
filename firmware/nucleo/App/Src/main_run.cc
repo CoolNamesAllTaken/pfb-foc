@@ -10,7 +10,6 @@
 #endif
 
 #include "stspin830.hh"
-#include "arm_math.h"
 
 /**
  * Task Map
@@ -79,14 +78,17 @@ int main_run() {
 }
 
 void startTask1(void * argument) {
+	// Currents to toggle between
+	float current_a = -50; // [mA]
+	float current_b  = -100; // [mA]
 	while(1) {
 		uint32_t osTickCount = osKernelGetTickCount();
 		uint32_t osTickFreq = osKernelGetTickFreq();
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-		if (g_half_bridge->get_target_current() == 50) {
-			g_half_bridge->set_target_current(100);
+		if (g_half_bridge->get_target_current() == current_a) {
+			g_half_bridge->set_target_current(current_b);
 		} else {
-			g_half_bridge->set_target_current(50);
+			g_half_bridge->set_target_current(current_a);
 		}
 		osDelayUntil(osTickCount + osTickFreq / task1Freq);
 	}

@@ -38,7 +38,9 @@ App/Motor/Src/motor.o: ../App/Motor/Src/motor.cc \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
  ../App/Motor/Inc/half_bridge.hh \
- ../App/PIDController/Inc/pid_controller.hh ../App/Encoder/Inc/Encoder.hh
+ ../App/PIDController/Inc/pid_controller.hh ../App/Encoder/Inc/Encoder.hh \
+ ../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h \
+ ../Drivers/CMSIS/Include/cmsis_compiler.h
 
 ../App/Motor/Inc/motor.hh:
 
@@ -121,3 +123,7 @@ App/Motor/Src/motor.o: ../App/Motor/Src/motor.cc \
 ../App/PIDController/Inc/pid_controller.hh:
 
 ../App/Encoder/Inc/Encoder.hh:
+
+../Middlewares/Third_Party/ARM_CMSIS/CMSIS/DSP/Include/arm_math.h:
+
+../Drivers/CMSIS/Include/cmsis_compiler.h:
