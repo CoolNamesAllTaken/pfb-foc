@@ -1,6 +1,7 @@
 "App/Encoder/Src/as5048a.o"
 "App/Encoder/Src/encoder.o"
 "App/Motor/Src/half_bridge.o"
+"App/Motor/Src/motor.o"
 "App/Motor/Src/stspin830.o"
 "App/PIDController/Src/pid_controller.o"
 "App/Src/main_run.o"

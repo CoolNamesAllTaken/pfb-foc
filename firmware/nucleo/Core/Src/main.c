@@ -67,7 +67,7 @@ SPI_HandleTypeDef * encoder_hspi; // SPI connection to encoder (AS5048A)
 volatile uint16_t curr_sense_adc_buf[ADC_BUF_LEN] = {0}; // buffer for ADC DMA reading
 TIM_HandleTypeDef *  half_bridge_pwm_timer;
 
-extern osThreadId_t current_control_task_handle;
+extern osThreadId_t motor_control_task_handle;
 
 /* USER CODE END PV */
 
@@ -723,8 +723,8 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
   /* This is called after the conversion is completed */
 //  printf("hay\r\n");
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	if (current_control_task_handle != NULL) {
-		vTaskNotifyGiveFromISR(current_control_task_handle, &xHigherPriorityTaskWoken);
+	if (motor_control_task_handle != NULL) {
+		vTaskNotifyGiveFromISR(motor_control_task_handle, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }

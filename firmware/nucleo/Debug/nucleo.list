@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000201e4  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0002c0ec  00000000  00000000  00020214  2**0
+ 12 .debug_info   0002c8cc  00000000  00000000  00020214  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00005b25  00000000  00000000  0004c300  2**0
+ 13 .debug_abbrev 00005bfa  00000000  00000000  0004cae0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001e78  00000000  00000000  00051e28  2**3
+ 14 .debug_aranges 00001e78  00000000  00000000  000526e0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00001c00  00000000  00000000  00053ca0  2**3
+ 15 .debug_ranges 00001c00  00000000  00000000  00054558  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00029e77  00000000  00000000  000558a0  2**0
+ 16 .debug_macro  0002a395  00000000  00000000  00056158  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   0001be3c  00000000  00000000  0007f717  2**0
+ 17 .debug_line   0001c3af  00000000  00000000  000804ed  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000f3567  00000000  00000000  0009b553  2**0
+ 18 .debug_str    000f4426  00000000  00000000  0009c89c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0018eaba  2**0
+ 19 .comment      0000007b  00000000  00000000  00190cc2  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00008f58  00000000  00000000  0018eb38  2**2
+ 20 .debug_frame  00008f58  00000000  00000000  00190d40  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -2635,8 +2635,8 @@ float PIDController::get_output() {
  8001984:	60b9      	str	r1, [r7, #8]
  8001986:	607a      	str	r2, [r7, #4]
  8001988:	603b      	str	r3, [r7, #0]
-			uint32_t timer_channel_id,
-			const volatile uint16_t& curr_sense_adc_voltage)
+		uint32_t timer_channel_id,
+		const volatile uint16_t& curr_sense_adc_voltage)
 		: timer_(timer)
 		, timer_channel_id_(timer_channel_id)
 		, curr_sense_adc_counts_(curr_sense_adc_voltage)
@@ -2767,7 +2767,7 @@ int main_run() {
  8001a84:	4602      	mov	r2, r0
  8001a86:	4b0e      	ldr	r3, [pc, #56]	; (8001ac0 <main_run+0xb8>)
  8001a88:	601a      	str	r2, [r3, #0]
-	current_control_task_handle = osThreadNew(StartCurrentControlTask, NULL, &current_control_task_attrs);
+	motor_control_task_handle = osThreadNew(StartMotorControlTask, NULL, &motor_control_task_attrs);
  8001a8a:	4a0e      	ldr	r2, [pc, #56]	; (8001ac4 <main_run+0xbc>)
  8001a8c:	2100      	movs	r1, #0
  8001a8e:	480e      	ldr	r0, [pc, #56]	; (8001ac8 <main_run+0xc0>)
@@ -2856,26 +2856,25 @@ void startTask1(void * argument) {
  8001b48:	42480000 	.word	0x42480000
  8001b4c:	42c80000 	.word	0x42c80000
 
-08001b50 <_Z23StartCurrentControlTaskPv>:
+08001b50 <_Z21StartMotorControlTaskPv>:
 }
 
-void StartCurrentControlTask(void * argument) {
+void StartMotorControlTask(void * argument) {
  8001b50:	b580      	push	{r7, lr}
  8001b52:	b082      	sub	sp, #8
  8001b54:	af00      	add	r7, sp, #0
  8001b56:	6078      	str	r0, [r7, #4]
-//	uint32_t osTickFreq = osKernelGetTickFreq();
+
 	while (1) {
-//		uint32_t osTickCount = osKernelGetTickCount();
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
  8001b58:	2201      	movs	r2, #1
  8001b5a:	2140      	movs	r1, #64	; 0x40
- 8001b5c:	480b      	ldr	r0, [pc, #44]	; (8001b8c <_Z23StartCurrentControlTaskPv+0x3c>)
+ 8001b5c:	480b      	ldr	r0, [pc, #44]	; (8001b8c <_Z21StartMotorControlTaskPv+0x3c>)
  8001b5e:	f003 fa59 	bl	8005014 <HAL_GPIO_WritePin>
 		g_half_bridge->Update();
- 8001b62:	4b0b      	ldr	r3, [pc, #44]	; (8001b90 <_Z23StartCurrentControlTaskPv+0x40>)
+ 8001b62:	4b0b      	ldr	r3, [pc, #44]	; (8001b90 <_Z21StartMotorControlTaskPv+0x40>)
  8001b64:	681a      	ldr	r2, [r3, #0]
- 8001b66:	4b0a      	ldr	r3, [pc, #40]	; (8001b90 <_Z23StartCurrentControlTaskPv+0x40>)
+ 8001b66:	4b0a      	ldr	r3, [pc, #40]	; (8001b90 <_Z21StartMotorControlTaskPv+0x40>)
  8001b68:	681b      	ldr	r3, [r3, #0]
  8001b6a:	681b      	ldr	r3, [r3, #0]
  8001b6c:	3304      	adds	r3, #4
@@ -2885,20 +2884,19 @@ void StartCurrentControlTask(void * argument) {
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
  8001b74:	2200      	movs	r2, #0
  8001b76:	2140      	movs	r1, #64	; 0x40
- 8001b78:	4804      	ldr	r0, [pc, #16]	; (8001b8c <_Z23StartCurrentControlTaskPv+0x3c>)
+ 8001b78:	4804      	ldr	r0, [pc, #16]	; (8001b8c <_Z21StartMotorControlTaskPv+0x3c>)
  8001b7a:	f003 fa4b 	bl	8005014 <HAL_GPIO_WritePin>
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // wait indefinitely for run notification, clear notifications (set to 0) upon receiving one
  8001b7e:	f04f 31ff 	mov.w	r1, #4294967295	; 0xffffffff
  8001b82:	2001      	movs	r0, #1
  8001b84:	f009 fab2 	bl	800b0ec <ulTaskNotifyTake>
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
- 8001b88:	e7e6      	b.n	8001b58 <_Z23StartCurrentControlTaskPv+0x8>
+ 8001b88:	e7e6      	b.n	8001b58 <_Z21StartMotorControlTaskPv+0x8>
  8001b8a:	bf00      	nop
  8001b8c:	40021800 	.word	0x40021800
  8001b90:	20000208 	.word	0x20000208
 
 08001b94 <_Z11RunAllTestsv>:
-//		osDelayUntil(osTickCount + osTickFreq / current_control_task_freq);
 	}
 }
 
@@ -6292,12 +6290,12 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
  8003390:	2300      	movs	r3, #0
  8003392:	60fb      	str	r3, [r7, #12]
-	if (current_control_task_handle != NULL) {
+	if (motor_control_task_handle != NULL) {
  8003394:	4b0d      	ldr	r3, [pc, #52]	; (80033cc <HAL_ADC_ConvCpltCallback+0x44>)
  8003396:	681b      	ldr	r3, [r3, #0]
  8003398:	2b00      	cmp	r3, #0
  800339a:	d012      	beq.n	80033c2 <HAL_ADC_ConvCpltCallback+0x3a>
-		vTaskNotifyGiveFromISR(current_control_task_handle, &xHigherPriorityTaskWoken);
+		vTaskNotifyGiveFromISR(motor_control_task_handle, &xHigherPriorityTaskWoken);
  800339c:	4b0b      	ldr	r3, [pc, #44]	; (80033cc <HAL_ADC_ConvCpltCallback+0x44>)
  800339e:	681b      	ldr	r3, [r3, #0]
  80033a0:	f107 020c 	add.w	r2, r7, #12

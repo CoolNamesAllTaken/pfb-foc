@@ -10,6 +10,7 @@
 #endif
 
 #include "stspin830.hh"
+#include "arm_math.h"
 
 /**
  * Task Map
@@ -19,7 +20,7 @@
 
 // Task Handles
 osThreadId_t task1Handle;
-osThreadId_t current_control_task_handle;
+osThreadId_t motor_control_task_handle;
 
 /* Constants */
 const uint32_t task1Freq = 2; // [Hz]
@@ -35,8 +36,7 @@ const osThreadAttr_t task1Attributes = {
 	0 									// reserved = reserved (must be 0)
 };
 
-const uint32_t current_control_task_freq = 20000; // [Hz]
-const osThreadAttr_t current_control_task_attrs = {
+const osThreadAttr_t motor_control_task_attrs = {
 	"current_control_task", 			// cost char * name = name of the thread
 	0, 									// uint32_t attr_bits = attribute bits
 	osThreadDetached, 					// void * cb_mem = memory for control block
@@ -50,7 +50,7 @@ const osThreadAttr_t current_control_task_attrs = {
 
 /* Function Prototypes */
 void startTask1(void * argument);
-void StartCurrentControlTask(void * argument);
+void StartMotorControlTask(void * argument);
 
 /* Global Variables */
 STSPIN830 * g_half_bridge;
@@ -73,7 +73,7 @@ int main_run() {
 #endif
 
 	task1Handle = osThreadNew(startTask1, NULL, &task1Attributes);
-	current_control_task_handle = osThreadNew(StartCurrentControlTask, NULL, &current_control_task_attrs);
+	motor_control_task_handle = osThreadNew(StartMotorControlTask, NULL, &motor_control_task_attrs);
 
 	return 1;
 }
@@ -92,15 +92,13 @@ void startTask1(void * argument) {
 	}
 }
 
-void StartCurrentControlTask(void * argument) {
-//	uint32_t osTickFreq = osKernelGetTickFreq();
+void StartMotorControlTask(void * argument) {
+
 	while (1) {
-//		uint32_t osTickCount = osKernelGetTickCount();
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
 		g_half_bridge->Update();
 		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // wait indefinitely for run notification, clear notifications (set to 0) upon receiving one
-//		osDelayUntil(osTickCount + osTickFreq / current_control_task_freq);
 	}
 }
 

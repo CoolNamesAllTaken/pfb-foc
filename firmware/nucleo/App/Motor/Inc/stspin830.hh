@@ -41,9 +41,9 @@ public:
 	 * 										out of the full resolution of the ADC.
 	 */
 	STSPIN830(
-			TIM_HandleTypeDef * timer,
-			uint32_t timer_channel_id,
-			const volatile uint16_t& curr_sense_adc_voltage)
+		TIM_HandleTypeDef * timer,
+		uint32_t timer_channel_id,
+		const volatile uint16_t& curr_sense_adc_voltage)
 		: timer_(timer)
 		, timer_channel_id_(timer_channel_id)
 		, curr_sense_adc_counts_(curr_sense_adc_voltage)
