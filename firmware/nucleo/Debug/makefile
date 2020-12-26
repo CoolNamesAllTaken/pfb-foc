@@ -79,7 +79,7 @@ main-build: nucleo.elf secondary-outputs
 
 # Tool invocations
 nucleo.elf: $(OBJS) $(USER_OBJS) /Users/jkailimcnelly/Box\ Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld
-	arm-none-eabi-g++ -o "nucleo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/jkailimcnelly/Box Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "nucleo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/jkailimcnelly/Box Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo.map" -Wl,--gc-sections -static -L../CMSIS/Lib --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

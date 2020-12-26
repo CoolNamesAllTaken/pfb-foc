@@ -51,7 +51,7 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../App/Test/Inc/test_half_bridge.hh \
  ../App/Test/Inc/test_pid_controller.hh ../App/Motor/Inc/stspin830.hh \
  ../App/Motor/Inc/half_bridge.hh \
- ../App/PIDController/Inc/pid_controller.hh
+ ../App/PIDController/Inc/pid_controller.hh ../CMSIS/Inc/arm_math.h
 
 ../Core/Inc/main.h:
 
@@ -164,3 +164,5 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 ../App/Motor/Inc/half_bridge.hh:
 
 ../App/PIDController/Inc/pid_controller.hh:
+
+../CMSIS/Inc/arm_math.h:
