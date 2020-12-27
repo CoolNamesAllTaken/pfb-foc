@@ -31,43 +31,55 @@ void PIDController::Update(float ms_since_last_update) {
 		return; // only allow updates with positive time steps (avoid errors for i, d)
 	}
 
-	// Populate circular error memory buffer with integrated chunk of previous error
 	float prev_error = error_;
+	// Populate circular error memory buffer with integrated chunk of previous error
+#ifdef PID_FIR
+	// Finite Impulse Response
 	error_mem_[error_mem_index_] = prev_error  * ms_since_last_update;
 	error_mem_index_++;
 	if (error_mem_index_ > error_mem_depth_) {
 		error_mem_index_ = 0; // wrap error memory index
 	}
+#else
+	// Infinite Impulse Response
+	i_error_ += prev_error * ms_since_last_update;
+#endif
 
 	// Proportional Error
 	error_ = state - target; // calculate current error
 
 	// Integral Error
-	float i_error = 0;
-	if (k_i != 0) {
+#ifdef PID_FIR
+	float i_error_ = 0.0f;
+	if (k_i != 0.0f) {
 		// skip integration if it's not being used
 		for (uint16_t i = 0; i < error_mem_depth_; i++) {
-			i_error += error_mem_[i];
+			i_error_ += error_mem_[i];
 		}
 	}
+#endif
 
 	// Derivative Error
 	float d_error = 0;
-	if (ms_since_last_update > 0) {
+	if (ms_since_last_update > 0.0f) {
 		// avoid yuge spike during controller reset
 		d_error = (error_ - prev_error) / ms_since_last_update;
 	}
 
-	output_ = k_p * (error_) + k_i * i_error + k_d * d_error;
+	output_ = k_p * (error_) + k_i * i_error_ + k_d * d_error;
 }
 
 /**
  * @brief Zeroes the integral accumulator of the PID Controller and forces an update.
  */
 void PIDController::Reset() {
+#ifdef PID_FIR
 	for (uint16_t i = 0; i < error_mem_depth_; i++) {
 		error_mem_[i] = 0;
 	}
+#else
+	i_error_ = 0;
+#endif
 	error_ = 0;
 	Update(0);
 }

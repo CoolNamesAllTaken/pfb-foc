@@ -72,10 +72,10 @@ int main_run();
 #define CURR_FB_U_GPIO_Port GPIOA
 #define ENC_SPI_CS_Pin GPIO_PIN_4
 #define ENC_SPI_CS_GPIO_Port GPIOA
-#define CURR_FB_V_Pin GPIO_PIN_7
-#define CURR_FB_V_GPIO_Port GPIOA
 #define CURR_FB_W_Pin GPIO_PIN_0
 #define CURR_FB_W_GPIO_Port GPIOB
+#define CURR_FB_V_Pin GPIO_PIN_1
+#define CURR_FB_V_GPIO_Port GPIOB
 #define ENU_Pin GPIO_PIN_13
 #define ENU_GPIO_Port GPIOB
 #define ENV_Pin GPIO_PIN_14

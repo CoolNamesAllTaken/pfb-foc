@@ -14,8 +14,8 @@ const float kADCOffsetVolts = 1.56f; // [V] ADC offset voltage (from IHM16M1 dat
 const float kADCGain = 1.53f * 0.33f; // [Ohms] Gain of current sense op-amp * sense resistor value
 
 const uint16_t kPulseMax = 10000; // maximum counts for timer PWM pulse length
-const float kDutyCycleMax = 1.0f; // max value of D
-const float kDutyCycleMin = 0.1f; // allow current measurement during D
+const float kDutyCycleMax = 0.95f; // max value of D
+const float kDutyCycleMin = 0.05f; // allow current measurement during D
 
 /**
  * Utility function that returns the current time in microseconds.

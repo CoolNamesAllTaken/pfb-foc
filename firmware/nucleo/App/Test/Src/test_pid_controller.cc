@@ -91,6 +91,7 @@ bool TestPIDControllerResponse() {
 		return false;
 	}
 
+#ifdef PID_FIR
 	T_TEST_PRINT("k_i Test #3 (overflow test).\r\n");
 	for (uint16_t i = 0; i < 2*pid.error_mem_depth_; i++) {
 		pid.Update(12.1);
@@ -101,6 +102,7 @@ bool TestPIDControllerResponse() {
 			return false;
 		}
 	}
+#endif
 
 	T_TEST_PRINT("Reset Test #1.\r\n");
 	pid.Reset();

@@ -24,7 +24,7 @@ osThreadId_t task1Handle;
 osThreadId_t motor_control_task_handle;
 
 /* Constants */
-const uint32_t task1Freq = 100; // [Hz]
+const uint32_t task1Freq = 500; // [Hz]
 const osThreadAttr_t task1Attributes = {
 	"task1", 							// cost char * name = name of the thread
 	0, 									// uint32_t attr_bits = attribute bits
@@ -94,11 +94,11 @@ int main_run() {
 	return 1;
 }
 
+// NOTE: this only works for angles from -720 to 720 deg!
 float WrapAngle(float theta) {
 	if (theta > 360.0f) {
 		theta -= 360.0f;
-	}
-	if (theta < 0.0f) {
+	} else if (theta < 0.0f) {
 		theta += 360.0f;
 	}
 	return theta;
@@ -107,8 +107,8 @@ float WrapAngle(float theta) {
 void startTask1(void * argument) {
 	// Currents to toggle between
 	float theta = 0;
-	float dtheta = 1;
-	float max_current = 50; // [mA]
+	float dtheta = 10;
+	float max_current = 100; // [mA]
 
 	while(1) {
 		uint32_t osTickCount = osKernelGetTickCount();
@@ -120,6 +120,8 @@ void startTask1(void * argument) {
 
 		g_half_bridge_u->set_target_current(arm_sin_f32(theta * 2 * 3.1415f / 360.0f) * max_current);
 		g_half_bridge_v->set_target_current(arm_sin_f32(WrapAngle(theta + 120.0f) * 2 * 3.1415f / 360.0f) * max_current);
+//		float i_w = arm_sin_f32(WrapAngle(theta + 240.0f) * 2 * 3.1415f / 360.0f) * max_current;
+//		g_half_bridge_w->set_target_current(i_w > 0 ? 500: -500);
 		g_half_bridge_w->set_target_current(arm_sin_f32(WrapAngle(theta + 240.0f) * 2 * 3.1415f / 360.0f) * max_current);
 
 		osDelayUntil(osTickCount + osTickFreq / task1Freq);

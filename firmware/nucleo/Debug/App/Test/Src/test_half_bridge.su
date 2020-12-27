@@ -1,4 +1,4 @@
 half_bridge.hh:23:2:HalfBridge::HalfBridge()	16	static
 stspin830.hh:43:2:STSPIN830::STSPIN830(TIM_HandleTypeDef*, uint32_t, const volatile uint16_t&)	24	static
-test_half_bridge.cc:40:6:bool TestHalfBridgeCreate()	504	static
+test_half_bridge.cc:40:6:bool TestHalfBridgeCreate()	112	static
 test_half_bridge.cc:71:6:void TestHalfBridgeAll()	16	static
