@@ -31,33 +31,25 @@ void PIDController::Update(float ms_since_last_update) {
 		return; // only allow updates with positive time steps (avoid errors for i, d)
 	}
 
-	float prev_error = error_;
-	// Populate circular error memory buffer with integrated chunk of previous error
-#ifdef PID_FIR
-	// Finite Impulse Response
-	error_mem_[error_mem_index_] = prev_error  * ms_since_last_update;
-	error_mem_index_++;
-	if (error_mem_index_ > error_mem_depth_) {
-		error_mem_index_ = 0; // wrap error memory index
-	}
-#else
-	// Infinite Impulse Response
-	i_error_ += prev_error * ms_since_last_update;
-#endif
+	float prev_error = error_; // store old error
 
 	// Proportional Error
 	error_ = state - target; // calculate current error
 
-	// Integral Error
+	// Populate circular error memory buffer with integrated chunk of previous error
+	float i_curr_error =  error_  * ms_since_last_update;
 #ifdef PID_FIR
-	float i_error_ = 0.0f;
-	if (k_i != 0.0f) {
-		// skip integration if it's not being used
-		for (uint16_t i = 0; i < error_mem_depth_; i++) {
-			i_error_ += error_mem_[i];
-		}
+	// Finite Impulse Response (accumulator is a moving window)
+	i_error_ -= error_mem_[error_mem_index_]; // clear last entry
+	error_mem_[error_mem_index_] = i_curr_error;
+	error_mem_index_++;
+	if (error_mem_index_ > error_mem_depth_) {
+		error_mem_index_ = 0; // wrap error memory index
 	}
 #endif
+
+	// Integral Error
+	i_error_ += i_curr_error;
 
 	// Derivative Error
 	float d_error = 0;

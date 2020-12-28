@@ -24,7 +24,7 @@ osThreadId_t task1Handle;
 osThreadId_t motor_control_task_handle;
 
 /* Constants */
-const uint32_t task1Freq = 500; // [Hz]
+const uint32_t task1Freq = 1000; // [Hz]
 const osThreadAttr_t task1Attributes = {
 	"task1", 							// cost char * name = name of the thread
 	0, 									// uint32_t attr_bits = attribute bits
@@ -107,8 +107,8 @@ float WrapAngle(float theta) {
 void startTask1(void * argument) {
 	// Currents to toggle between
 	float theta = 0;
-	float dtheta = 10;
-	float max_current = 100; // [mA]
+	float dtheta = 1;
+	float max_current = 200; // [mA]
 
 	while(1) {
 		uint32_t osTickCount = osKernelGetTickCount();

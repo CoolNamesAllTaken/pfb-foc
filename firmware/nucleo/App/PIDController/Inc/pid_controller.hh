@@ -10,8 +10,8 @@
 
 #include <stdint.h> // for uint16_t
 
-#define PID_MAX_MEM_DEPTH 2
-#define PID_FIR
+#define PID_MAX_MEM_DEPTH 100
+//#define PID_FIR
 
 class PIDController {
 private:
@@ -20,10 +20,8 @@ private:
 	uint16_t error_mem_depth_{PID_MAX_MEM_DEPTH};
 	float error_mem_[PID_MAX_MEM_DEPTH]{0};
 	uint16_t error_mem_index_{0};
-#else
-	// Error accumulation term for Infinite Impulse Response
-	float i_error_{0};
 #endif
+	float i_error_{0}; // error accumulation term
 
 	float output_{0};
 	float error_{0};
