@@ -7,6 +7,7 @@
 #include "test_encoder.hh"
 #include "test_half_bridge.hh"
 #include "test_pid_controller.hh"
+#include "test_current_sensor.hh"
 #endif
 
 #include "stspin830.hh"
@@ -145,6 +146,7 @@ void RunAllTests() {
 	TestEncoderAll();
 	TestPIDControllerAll();
 	TestHalfBridgeAll();
+	TestCurrentSensorAll();
 
 }
 #endif

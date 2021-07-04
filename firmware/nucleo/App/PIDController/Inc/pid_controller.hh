@@ -5,41 +5,32 @@
  *      Author: jkailimcnelly
  */
 
-#ifndef PIDCONTROLLER_INC_PID_CONTROLLER_HH_
-#define PIDCONTROLLER_INC_PID_CONTROLLER_HH_
+#ifndef _PID_CONTROLLER_HH_
+#define _PID_CONTROLLER_HH_
 
 #include <stdint.h> // for uint16_t
-
-#define PID_MAX_MEM_DEPTH 100
-//#define PID_FIR
+#include "foc_utils.hh"
 
 class PIDController {
-private:
-#ifdef PID_FIR
-	// Circular error buffer for Finite Impulse Response
-	uint16_t error_mem_depth_{PID_MAX_MEM_DEPTH};
-	float error_mem_[PID_MAX_MEM_DEPTH]{0};
-	uint16_t error_mem_index_{0};
-#endif
-	float i_error_{0}; // error accumulation term
-
-	float output_{0};
-	float error_{0};
 
 public:
 	float k_p{0};
 	float k_i{0};
 	float k_d{0};
 
-	const float& state;
-	float target{0};
+	float ramp{0};
+	float limit{1e3};
 
-	PIDController(float k_p_in, float k_i_in, float k_d_in, const float& state_in);
+	PIDController(float k_p_in, float k_i_in, float k_d_in, float ramp_in, float limit_in);
 
-	void Update(float ms_since_last_update);
+	float Update(float error, float ms_since_last_update);
 	void Reset();
 
-	float get_output();
+protected:
+	float i_error_{0}; // error accumulation term
+
+	float prev_output_{0};
+	float prev_error_{0};
 };
 
-#endif /* PIDCONTROLLER_INC_PID_CONTROLLER_HH_ */
+#endif /* _PID_CONTROLLER_HH_ */

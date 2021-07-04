@@ -10,6 +10,9 @@
 
 #define private public
 #include "pid_controller.hh"
+#include "foc_utils.hh"
+
+const float kErrorMargin = 0.01;
 
 bool TestPIDControllerCreate() {
 	TEST_PRINT("Create PID Controller.\r\n");
@@ -18,8 +21,9 @@ bool TestPIDControllerCreate() {
 	float k_p = 1.2;
 	float k_i = 3.4;
 	float k_d = 5.6;
-	float state = 2.1;
-	PIDController pid(k_p, k_i, k_d, state);
+	float ramp = 5.1;
+	float limit = 2.2;
+	PIDController pid(k_p, k_i, k_d, ramp, limit);
 
 	if (pid.k_p != k_p) {
 		T_FAIL_PRINT("Incorrect k_p, constructed with %f but got %f.\r\n", k_p, pid.k_p);
@@ -33,111 +37,110 @@ bool TestPIDControllerCreate() {
 		T_FAIL_PRINT("Incorrect k_d, constructed with %f but got %f.\r\n", k_d, pid.k_d);
 		return false;
 	}
-
-	if (pid.state != state) {
-		T_FAIL_PRINT("Incorrect state, constructed with %f but got %f.\r\n", state, pid.state);
+	if (pid.ramp != ramp) {
+		T_FAIL_PRINT("Incorrect ramp, constructed with %f but got %f.\r\n", ramp, pid.ramp);
 		return false;
 	}
-	state = 345.67;
-	if (pid.state != state) {
-		T_FAIL_PRINT("State does not track, expected %f but got %f.\r\n", state, pid.state);
+	if (pid.limit != limit) {
+		T_FAIL_PRINT("Incorrect limit, constructed with %f but got %f.\r\n", limit, pid.limit);
 		return false;
-	}
+}
 
 	return true;
 }
 
 bool TestPIDControllerResponse() {
+	float state = 0;
+	float target = 0;
+	float output = 0;
+
+	float ramp = 0;
+	float limit = 0;
+
 	TEST_PRINT("Test PID Controller Response.\r\n");
 	T_TEST_PRINT("Test default response afer initialization.\r\n");
-	float state = 0;
-	PIDController pid = PIDController(0, 0, 0, state);
-	if (pid.get_output() != 0) {
-		T_FAIL_PRINT("Nonzero output after creation, expected %f but got %f.\r\n", 0.0, pid.get_output());
+	PIDController pid = PIDController(0, 0, 0, ramp, limit);
+	output = pid.Update(0.0f, 10.0f);
+	if (output != 0) {
+		T_FAIL_PRINT("Nonzero output after creation, expected %f but got %f.\r\n", 0.0, output);
 		return false;
 	}
 
 	T_TEST_PRINT("k_p Test #1.\r\n");
 	state = 1.0;
-	pid.target = 2.0;
+	target = 2.0;
 	pid.k_p = 5.0;
-	pid.Update(10.5);
+	output = pid.Update(state - target, 10.5);
 	float expect_output = (1.0 - 2.0) * 5.0;
-	if (pid.get_output() != expect_output) {
+	if (output != expect_output) {
 		T_FAIL_PRINT("Failed k_p test #1, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
 
 	T_TEST_PRINT("k_i Test #1.\r\n");
+	float prev_error = state - target;
 	pid.k_p = 0;
 	pid.k_i = 3;
-	pid.target = 98.5;
+	target = 98.5;
 	state = 70;
-	pid.Update(10.7);
-	expect_output = (1.0-2.0) * 10.7 * 3;
-	if (pid.get_output() != expect_output) {
+	output = pid.Update(state - target, 10.7);
+	expect_output = pid.k_i * (prev_error + (state - target)) * 10.7f / 2.0f;
+	if (!WITHIN(output, expect_output, kErrorMargin)) {
 		T_FAIL_PRINT("Failed k_i test #1, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
 
 	T_TEST_PRINT("k_i Test #2.\r\n");
-	pid.Update(11.9);
-	expect_output += (70-98.5) * 11.9 * 3;
-	if (pid.get_output() != expect_output) {
+	prev_error = state - target;
+	target = 2;
+	state = 5;
+	output = pid.Update(state - target, 11.9);
+	expect_output += pid.k_i * (prev_error + (state - target)) * 11.9f / 2.0f;
+	if (!WITHIN(output, expect_output, kErrorMargin)) {
 		T_FAIL_PRINT("Failed k_i test #2, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
-
-#ifdef PID_FIR
-	T_TEST_PRINT("k_i Test #3 (overflow test).\r\n");
-	for (uint16_t i = 0; i < 2*pid.error_mem_depth_; i++) {
-		pid.Update(12.1);
-		expect_output += (70-98.5) * 12.1 * 3;
-		if (!CheckClose(pid.get_output(), expect_output, (float)0.5)) {
-			T_FAIL_PRINT("Failed overflow test on iteration %d, expected output %f but got %f.\r\n",
-					i, expect_output, pid.get_output());
-			return false;
-		}
-	}
-#endif
 
 	T_TEST_PRINT("Reset Test #1.\r\n");
 	pid.Reset();
 	pid.k_p = 0;
 	pid.k_i = 0;
 	pid.k_d = 0;
+	output = pid.Update(5.0, 1.2);
 	expect_output = 0;
-	if (pid.get_output() != expect_output) {
+	if (!WITHIN(output, expect_output, kErrorMargin)) {
 		T_FAIL_PRINT("Failed reset test #1, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
 
 	T_TEST_PRINT("Reset Test #2.\r\n");
 	state = 0;
-	pid.target = 0;
-	pid.Update(10);
+	target = 0;
+	output = pid.Update(state - target, 10);
 	expect_output = 0;
-	if (pid.get_output() != expect_output) {
+	if (!WITHIN(output, expect_output, kErrorMargin)) {
 		T_FAIL_PRINT("Failed reset test #2, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
 
 	T_TEST_PRINT("k_d Test #1.\r\n");
 	pid.k_d = 13.5;
 	state = -487.3;
-	pid.target = 22;
-	pid.Update(10);
+	target = 22;
+	output = pid.Update(state - target, 10);
 	expect_output = (-487.3 - 22) * 13.5 / 10;
-	if (pid.get_output() != expect_output) {
+	if (!WITHIN(output, expect_output, kErrorMargin)) {
 		T_FAIL_PRINT("Failed k_d Test #1, expected output %f but got %f.\r\n",
-				expect_output, pid.get_output());
+				expect_output, output);
 		return false;
 	}
+
+	// TODO: test ramp and limit
 
 	return true;
 }

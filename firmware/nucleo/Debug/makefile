@@ -1,5 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -52,6 +53,12 @@ endif
 
 -include ../makefile.defs
 
+OPTIONAL_TOOL_DEPS := \
+$(wildcard ../makefile.defs) \
+$(wildcard ../makefile.init) \
+$(wildcard ../makefile.targets) \
+
+
 BUILD_ARTIFACT_NAME := nucleo
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
@@ -78,22 +85,22 @@ all: main-build
 main-build: nucleo.elf secondary-outputs
 
 # Tool invocations
-nucleo.elf: $(OBJS) $(USER_OBJS) /Users/jkailimcnelly/Box\ Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld
-	arm-none-eabi-g++ -o "nucleo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/jkailimcnelly/Box Sync/Projects/pfb-foc/firmware/nucleo/STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo.map" -Wl,--gc-sections -static -L../CMSIS/Lib --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+nucleo.elf: $(OBJS) $(USER_OBJS) Y:\git-checkouts\pfb-foc\firmware\nucleo\STM32F722ZETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "nucleo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"Y:\git-checkouts\pfb-foc\firmware\nucleo\STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo.map" -Wl,--gc-sections -static -Wl,--start-group -larm_cortexM7lfsp_math -Wl,--end-group -L../CMSIS/Lib --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-default.size.stdout: $(EXECUTABLES)
+default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-size  $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-nucleo.list: $(EXECUTABLES)
+nucleo.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "nucleo.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-nucleo.bin: $(EXECUTABLES)
+nucleo.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "nucleo.bin"
 	@echo 'Finished building: $@'
 	@echo ' '

@@ -20,7 +20,7 @@ public:
 		FAULT // overcurrent or other event has occurred, half-bridge disabled
 	}; // TODO: get rid of unused states, maybe make things better overall, update states regularly
 
-	HalfBridge() {} // abstract class due to pure virtual functions: constructor does nothing
+//	HalfBridge() {} // abstract class due to pure virtual functions: constructor does nothing
 
 	virtual void Init() = 0;
 	virtual void Update() = 0; // must be called with HIGH FREQUENCY for current limiting

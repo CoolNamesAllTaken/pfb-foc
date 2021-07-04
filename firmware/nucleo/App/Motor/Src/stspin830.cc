@@ -6,6 +6,7 @@
  */
 
 #include "stspin830.hh"
+#include "foc_utils.hh"
 
 /* Private Constants */
 const uint16_t kADCMaxCounts = 0xFFFF>>4; // 12-bit ADC value
@@ -16,14 +17,6 @@ const float kADCGain = 1.53f * 0.33f; // [Ohms] Gain of current sense op-amp * s
 const uint16_t kPulseMax = 10000; // maximum counts for timer PWM pulse length
 const float kDutyCycleMax = 0.95f; // max value of D
 const float kDutyCycleMin = 0.05f; // allow current measurement during D
-
-/**
- * Utility function that returns the current time in microseconds.
- * @retval Current uptime, in microseconds.
- */
-uint32_t GetTickMicros() {
-	return HAL_GetTick() * 1000 - SysTick->VAL / ((SysTick->LOAD + 1) / 1000);
-}
 
 /**
  * @brief Initializes the relevant channel of the STSPIN320 half-bridge.
@@ -49,17 +42,15 @@ void STSPIN830::Update() {
 	current_ma_ = (curr_sense_adc_voltage - kADCOffsetVolts) / kADCGain * 1000;
 	// TODO: set break bit for the PWM if current too large, enter FAULT state
 	// Update target current
-	pid.target = target_current_;
 	uint32_t curr_time_us = GetTickMicros();
-	pid.Update((curr_time_us - pid_last_update_us) / 1000.0f);
-	pid_last_update_us = curr_time_us;
 	// Calculate duty cycle for closed loop control
-	duty_cycle_ -= pid.get_output();
+	duty_cycle_ -= pid.Update(target_current_ - current_ma_, (curr_time_us - pid_last_update_us) / 1000.0f);
 	if (duty_cycle_ > kDutyCycleMax) {
 		duty_cycle_ = kDutyCycleMax;
 	} else if (duty_cycle_ < kDutyCycleMin) {
 		duty_cycle_ = kDutyCycleMin;
 	}
+	pid_last_update_us = curr_time_us;
 	// Set duty cycle: note that CH and CHN are in HIGH polarity; counter expiration triggers low side current sense
 	__HAL_TIM_SET_COMPARE(timer_, timer_channel_id_, static_cast<uint16_t>(duty_cycle_ * kPulseMax));
 }

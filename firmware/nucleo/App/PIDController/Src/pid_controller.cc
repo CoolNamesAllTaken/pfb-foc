@@ -6,76 +6,65 @@
  */
 
 #include "pid_controller.hh"
+#include "foc_utils.hh"
+
+const float kDefaultLimit = 1e3f;
 
 /**
  * @brief Constructor for PID Controller class. Creates a PID controller with the provided gains.
  * @param[in] k_p_in Proportional gain.
  * @param[in] k_i_in Integral gain.
  * @param[in] k_d_in Derivative gain.
- * @param[in] state_in Reference to the plant state, which is read during every update.
+ * @param[in] ramp_in Maximum ramp (derivative) of output.
+ * @param[in] limit_in Maximum value of output.
  */
-PIDController::PIDController(float k_p_in, float k_i_in, float k_d_in, const float& state_in)
+PIDController::PIDController(float k_p_in, float k_i_in, float k_d_in, float ramp_in, float limit_in)
 	: k_p(k_p_in)
 	, k_i(k_i_in)
 	, k_d(k_d_in)
-	, state(state_in){}
+	, ramp(ramp_in)
+	, limit(limit_in > 0.0f ? limit_in : kDefaultLimit){}
 
 /**
  * @brief Updates the PID controller based on a new sample. Updates output and error accumulator
  * based on the state and target of the plant, as well as the time elapsed since the last update.
  * @param[in] ms_since_last_update Milliseconds elapsed since last update function call. Used for
  * integrating error in the error accumulator.
+ * @retval Calculated output response of PID controller.
  */
-void PIDController::Update(float ms_since_last_update) {
-	if (ms_since_last_update < 0) {
-		return; // only allow updates with positive time steps (avoid errors for i, d)
+float PIDController::Update(float error, float ms_since_last_update) {
+	if (ms_since_last_update <= 0.0f) {
+		return 0; // only allow updates with positive time steps (avoid errors for i, d)
 	}
 
-	float prev_error = error_; // store old error
+	float p = k_p * error;
+	float i = i_error_ + k_i * ((error + prev_error_)*ms_since_last_update/2); // Tustin's method (trapezoidal integration)
+	i = CONSTRAIN(i, -limit, limit); // integral anti-windup
+	float d = k_d * (error - prev_error_) / ms_since_last_update;
 
-	// Proportional Error
-	error_ = state - target; // calculate current error
+	float output = CONSTRAIN(p + i + d, -limit, limit); // sum and constrain output
 
-	// Populate circular error memory buffer with integrated chunk of previous error
-	float i_curr_error =  error_  * ms_since_last_update;
-#ifdef PID_FIR
-	// Finite Impulse Response (accumulator is a moving window)
-	i_error_ -= error_mem_[error_mem_index_]; // clear last entry
-	error_mem_[error_mem_index_] = i_curr_error;
-	error_mem_index_++;
-	if (error_mem_index_ > error_mem_depth_) {
-		error_mem_index_ = 0; // wrap error memory index
-	}
-#endif
-
-	// Integral Error
-	i_error_ += i_curr_error;
-
-	// Derivative Error
-	float d_error = 0;
-	if (ms_since_last_update > 0.0f) {
-		// avoid yuge spike during controller reset
-		d_error = (error_ - prev_error) / ms_since_last_update;
+	if (ramp > 0.0f) { // output ramp is defined
+		if (output - prev_output_ > ramp) {
+			output = prev_output_ + ramp; // rail to positive ramp
+		} else if (output - prev_output_ < -ramp) {
+			output = prev_output_ - ramp; // rail to negative ramp
+		}
 	}
 
-	output_ = k_p * (error_) + k_i * i_error_ + k_d * d_error;
+	// save stuff for next round
+	prev_error_ = error;
+	prev_output_ = output;
+	i_error_ = i;
+
+	return output;
 }
 
 /**
  * @brief Zeroes the integral accumulator of the PID Controller and forces an update.
  */
 void PIDController::Reset() {
-#ifdef PID_FIR
-	for (uint16_t i = 0; i < error_mem_depth_; i++) {
-		error_mem_[i] = 0;
-	}
-#else
 	i_error_ = 0;
-#endif
-	error_ = 0;
-	Update(0);
-}
-
-float PIDController::get_output() {
-	return output_;
+	prev_error_ = 0;
+	prev_output_ = 0;
 }

@@ -47,7 +47,7 @@ public:
 		: timer_(timer)
 		, timer_channel_id_(timer_channel_id)
 		, curr_sense_adc_counts_(curr_sense_adc_voltage)
-		, pid(0.0005f, 0.0f, 0.000f, current_ma_){};
+		, pid(0.0005f, 0.0f, 0.000f, 0.0, 0.0){};
 
 	void Init();
 	void Update();
