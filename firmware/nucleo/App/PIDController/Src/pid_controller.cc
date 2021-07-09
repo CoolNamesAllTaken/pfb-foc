@@ -18,12 +18,12 @@ const float kDefaultLimit = 1e3f;
  * @param[in] ramp_in Maximum ramp (derivative) of output.
  * @param[in] limit_in Maximum value of output.
  */
-PIDController::PIDController(float k_p_in, float k_i_in, float k_d_in, float ramp_in, float limit_in)
+PIDController::PIDController(float k_p_in, float k_i_in, float k_d_in, float ramp_in = 0.0f, float limit_in = kDefaultLimit)
 	: k_p(k_p_in)
 	, k_i(k_i_in)
 	, k_d(k_d_in)
-	, ramp(ramp_in)
-	, limit(limit_in > 0.0f ? limit_in : kDefaultLimit){}
+	, ramp(ramp_in >= 0.0f ? ramp_in : 0.0f) // don't allow negative ramp values
+	, limit(limit_in > 0.0f ? limit_in : kDefaultLimit){} // don't allow zero or negative limit values
 
 /**
  * @brief Updates the PID controller based on a new sample. Updates output and error accumulator

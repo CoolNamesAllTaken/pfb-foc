@@ -8,15 +8,15 @@
 #include "test_framework.hh"
 #include "test_current_sensor.hh"
 
-bool CurrentsAreCorrect(CurrentSensor current_sensor, float curr_u_expect, float curr_v_expect, float curr_w_expect) {
-	if (current_sensor.curr_u != curr_u_expect) {
-		T_FAIL_PRINT("Incorrect phase U current: expected %f but got %f.\r\n", curr_u_expect, current_sensor.curr_u);
+bool CurrentsAreCorrect(CurrentSensor current_sensor, float i_u_expect, float i_v_expect, float i_w_expect) {
+	if (current_sensor.i_u != i_u_expect) {
+		T_FAIL_PRINT("Incorrect phase U current: expected %f but got %f.\r\n", i_u_expect, current_sensor.i_u);
 		return false;
-	} else if (current_sensor.curr_v != curr_v_expect) {
-		T_FAIL_PRINT("Incorrect phase V current: expected %f but got %f.\r\n", curr_v_expect, current_sensor.curr_v);
+	} else if (current_sensor.i_v != i_v_expect) {
+		T_FAIL_PRINT("Incorrect phase V current: expected %f but got %f.\r\n", i_v_expect, current_sensor.i_v);
 		return false;
-	} else if (current_sensor.curr_w != curr_w_expect) {
-		T_FAIL_PRINT("Incorrect phase W current: expected %f but got %f.\r\n", curr_w_expect, current_sensor.curr_w);
+	} else if (current_sensor.i_w != i_w_expect) {
+		T_FAIL_PRINT("Incorrect phase W current: expected %f but got %f.\r\n", i_w_expect, current_sensor.i_w);
 		return false;
 	}
 	return true;
@@ -35,11 +35,11 @@ bool TestCurrentSensorCurrent() {
 
 	T_TEST_PRINT("Current sense ADC counts at 0.\r\n");
 	current_sensor.ReadCurrents();
-	float curr_u_expect = -adc_offset / adc_gain * 1000;
-	float curr_v_expect = -adc_offset / adc_gain * 1000;
-	float curr_w_expect = -adc_offset / adc_gain * 1000;
+	float i_u_expect = -adc_offset / adc_gain * 1000;
+	float i_v_expect = -adc_offset / adc_gain * 1000;
+	float i_w_expect = -adc_offset / adc_gain * 1000;
 
-	if (!CurrentsAreCorrect(current_sensor, curr_u_expect, curr_v_expect, curr_w_expect)) {
+	if (!CurrentsAreCorrect(current_sensor, i_u_expect, i_v_expect, i_w_expect)) {
 		return false;
 	}
 
@@ -48,11 +48,11 @@ bool TestCurrentSensorCurrent() {
 	csense_adc_counts[1] = 0xFFF;
 	csense_adc_counts[2] = 2934;
 	current_sensor.ReadCurrents();
-	curr_u_expect = (static_cast<float>(csense_adc_counts[0]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
-	curr_v_expect = (static_cast<float>(csense_adc_counts[1]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
-	curr_w_expect = (static_cast<float>(csense_adc_counts[2]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
+	i_u_expect = (static_cast<float>(csense_adc_counts[0]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
+	i_v_expect = (static_cast<float>(csense_adc_counts[1]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
+	i_w_expect = (static_cast<float>(csense_adc_counts[2]) / adc_max_counts * adc_max_volts - adc_offset) / adc_gain * 1000;
 
-	if (!CurrentsAreCorrect(current_sensor, curr_u_expect, curr_v_expect, curr_w_expect)) {
+	if (!CurrentsAreCorrect(current_sensor, i_u_expect, i_v_expect, i_w_expect)) {
 		return false;
 	}
 	return true;

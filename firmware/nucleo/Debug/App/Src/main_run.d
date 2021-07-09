@@ -51,10 +51,12 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../App/Test/Inc/test_half_bridge.hh \
  ../App/Test/Inc/test_pid_controller.hh \
  ../App/Test/Inc/test_current_sensor.hh \
- ../App/Motor/Inc/current_sensor.hh ../App/Motor/Inc/stspin830.hh \
- ../App/Motor/Inc/half_bridge.hh \
- ../App/PIDController/Inc/pid_controller.hh ../App/Inc/foc_utils.hh \
- ../CMSIS/Inc/arm_math.h
+ ../App/Motor/Inc/current_sensor.hh ../App/Test/Inc/test_motor_driver.hh \
+ ../App/Test/Inc/test_foc_utils.hh ../App/Motor/Inc/motor.hh \
+ ../App/Inc/foc_utils.hh ../App/PIDController/Inc/pid_controller.hh \
+ ../App/Motor/Inc/motor_driver.hh ../App/Motor/Inc/current_sensor.hh \
+ ../App/Encoder/Inc/encoder.hh ../App/Inc/defaults.hh \
+ ../App/Encoder/Inc/AS5048A.hh ../App/Encoder/Inc/encoder.hh
 
 ../Core/Inc/main.h:
 
@@ -166,12 +168,24 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
 
 ../App/Motor/Inc/current_sensor.hh:
 
-../App/Motor/Inc/stspin830.hh:
+../App/Test/Inc/test_motor_driver.hh:
 
-../App/Motor/Inc/half_bridge.hh:
+../App/Test/Inc/test_foc_utils.hh:
 
-../App/PIDController/Inc/pid_controller.hh:
+../App/Motor/Inc/motor.hh:
 
 ../App/Inc/foc_utils.hh:
 
-../CMSIS/Inc/arm_math.h:
+../App/PIDController/Inc/pid_controller.hh:
+
+../App/Motor/Inc/motor_driver.hh:
+
+../App/Motor/Inc/current_sensor.hh:
+
+../App/Encoder/Inc/encoder.hh:
+
+../App/Inc/defaults.hh:
+
+../App/Encoder/Inc/AS5048A.hh:
+
+../App/Encoder/Inc/encoder.hh:

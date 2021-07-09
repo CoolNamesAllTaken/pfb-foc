@@ -1,1 +1,10 @@
-foc_utils.cc:14:10:uint32_t GetTickMicros()	8	static
+cmath:279:3:constexpr float std::fmod(float, float)	16	static
+foc_utils.cc:15:10:uint32_t GetTickMicros()	8	static
+foc_utils.cc:24:7:float RadToDeg(float)	16	static
+foc_utils.cc:33:7:float DegToRad(float)	16	static
+foc_utils.cc:42:7:float sind(float)	16	static
+foc_utils.cc:51:7:float cosd(float)	16	static
+foc_utils.cc:69:6:void TransFwdDQZ(float, float, float, float, float&, float&, float&)	48	static
+foc_utils.cc:92:6:void TransRevDQZ(float, float, float, float, float&, float&, float&)	48	static
+foc_utils.cc:108:7:float ElectricalAngle(float, uint16_t)	16	static
+foc_utils.cc:117:7:float NormalizeAngle(float)	24	static

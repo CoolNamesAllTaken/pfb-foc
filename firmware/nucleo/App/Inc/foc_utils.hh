@@ -16,4 +16,21 @@
 
 uint32_t GetTickMicros();
 
+float RadToDeg(float rad);
+float DegToRad(float deg);
+
+float sind(float theta);
+float cosd(float theta);
+
+void TransFwdDQZ(
+		float theta, float i_u, float i_v, float i_w,
+		float& i_d, float& i_q, float& i_z);
+
+void TransRevDQZ(
+		float theta, float i_d, float i_q, float i_z,
+		float& i_u, float& i_v, float& i_w);
+
+float ElectricalAngle(float shaft_angle, uint16_t num_pole_pairs);
+float NormalizeAngle(float angle);
+
 #endif /* INC_FOC_UTILS_HH_ */

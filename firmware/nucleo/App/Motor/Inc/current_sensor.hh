@@ -13,9 +13,9 @@
 
 class CurrentSensor {
 public:
-	float curr_u{0}; // [mA] current measured by current sensor
-	float curr_v{0};
-	float curr_w{0};
+	float i_u{0}; // [A] current measured by current sensor
+	float i_v{0};
+	float i_w{0};
 
 	// Consturctor
 	CurrentSensor(
@@ -28,7 +28,7 @@ public:
 		, adc_offset_volts_(adc_offset_volts_in)
 		, adc_gain_(adc_gain_in){};
 
-	void LinkToADC(uint16_t* adc_counts_u_in, uint16_t* adc_counts_v_in, uint16_t* adc_counts_w_in); // where to look for ADC values
+	void LinkToADC(volatile uint16_t* adc_counts_u_in, volatile uint16_t* adc_counts_v_in, volatile uint16_t* adc_counts_w_in); // where to look for ADC values
 	void ReadCurrents(); // conversion complete callback
 
 protected:
@@ -39,9 +39,9 @@ protected:
 	float adc_gain_{1.0f};
 
 
-	uint16_t* adc_counts_u_{NULL};
-	uint16_t* adc_counts_v_{NULL};
-	uint16_t* adc_counts_w_{NULL};
+	volatile uint16_t* adc_counts_u_{NULL};
+	volatile uint16_t* adc_counts_v_{NULL};
+	volatile uint16_t* adc_counts_w_{NULL};
 };
 
 #endif /* _CURRENT_SENSOR_HH_ */

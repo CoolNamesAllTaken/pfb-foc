@@ -1,2 +1,6 @@
-motor.cc:12:6:void Motor::Init()	16	static
-motor.cc:19:6:void Motor::Update()	16	static
+motor.cc:11:6:void Motor::Init()	16	static
+motor.cc:28:6:void Motor::SetCurrent(float, float, float)	24	static
+motor.cc:41:6:void Motor::SetTorque(float)	16	static
+motor.cc:50:6:void Motor::SetVelocity(float)	16	static
+motor.cc:59:6:void Motor::SetPosition(float)	16	static
+motor.cc:64:6:void Motor::Update()	24	static

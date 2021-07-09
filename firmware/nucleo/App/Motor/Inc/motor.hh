@@ -8,59 +8,100 @@
 #ifndef MOTOR_INC_MOTOR_HH_
 #define MOTOR_INC_MOTOR_HH_
 
-#include "stm32f7xx_hal.h"
 #include "stdint.h"
-#include "half_bridge.hh"
+#include "foc_utils.hh"
 #include "pid_controller.hh"
-#include "Encoder.hh"
+#include "motor_driver.hh"
+#include "current_sensor.hh"
+#include "encoder.hh"
 
 class Motor {
 public:
+	enum ControlMode {
+		CURRENT_CONTROL = 0,
+		TORQUE_CONTROL,
+		VELOCITY_CONTROL,
+		POSITION_CONTROL
+	};
+
 	struct MotorConfig_t {
-		uint16_t current_limit{0}; // [mA] current limit (max magnitude of i_dq vector)
+		uint16_t num_pole_pairs; // number of diametrically opposite pole pairs in motor
+		float phase_resistance; // [Ohms] resistance of a single motor phase
+		float phase_inductance; // [nH] unused
+		float current_limit; // [A] current limit (max magnitude of i_dq vector)
+		float power_supply_voltage; // [V] power supply voltage
 	};
 
 	/**
 	 * @brief Constructor for Motor object.
-	 * @param[in] u_bridge HalfBridge for phase U.
-	 * @param[in] v_bridge HalfBridge for phase V.
-	 * @param[in] w_bridge HalfBridge for phase W.
+	 * @param[in] driver MotorDriver for motor.
 	 * @param[in] enc Absolute position encoder for motor.
 	 */
 	Motor(
-		HalfBridge& u_bridge,
-		HalfBridge& v_bridge,
-		HalfBridge& w_bridge,
-		Encoder& enc)
-		: u_bridge_(u_bridge)
-		, v_bridge_(v_bridge)
-		, w_bridge_(w_bridge)
-		, enc_(enc) {};
+		MotorConfig_t config,
+		MotorDriver * driver,
+		Encoder * enc,
+		CurrentSensor * csense,
+		PIDController * pid_torque)
+		: config_(config)
+		, driver_(driver)
+		, enc_(enc)
+		, csense_(csense)
+		, pid_torque_(pid_torque) {};
 
 	void Init();
 	void Update();
 
-	void SetTorque(float torque);
-	void SetVelocity(float velocity);
-	void SetPosition(float angle);
+	void SetCurrent(float i_u, float i_v, float i_w);
+	void SetTorque(float i_d);
+	void SetVelocity(float omega);
+	void SetPosition(float theta);
 
 private:
-	HalfBridge& u_bridge_;
-	HalfBridge& v_bridge_;
-	HalfBridge& w_bridge_;
-	Encoder& enc_;
+	MotorConfig_t config_;
+	ControlMode mode_{CURRENT_CONTROL};
 
-	float theta{0}; // target encoder angle
+	MotorDriver * driver_{NULL};
+	Encoder * enc_{NULL};
+	CurrentSensor * csense_{NULL};
 
-	// Time invariant currents
-	float i_d_{0}; // direct current component in rotor reference frame
-	float i_q_{0}; // quadrature current component in rotor reference frame
+	PIDController * pid_torque_{NULL};
+	PIDController * pid_velocity_{NULL};
+	PIDController * pid_position_{NULL};
 
-	// Stator currents
-	float i_u_{0}; // phase U current (flowing to GND)
-	float i_v_{0}; // phase V current (flowing to GND)
-	float i_w_{0}; // phase W current (flowing to GND)
+	uint32_t last_update_micros_{0}; // [us] timestamp of last control loop execution
 
+
+
+	float theta_cmd_{0}; // [degrees] target encoder angle (electrical angle)
+	float theta_meas_{0};
+	float omega_cmd_{0}; // [degrees/sec] target angular velocity
+	float omega_meas_{0};
+
+	// Time invariant currents.
+	float i_d_cmd_{0}; // direct current component in rotor reference frame
+	float i_d_meas_{0};
+	float i_q_cmd_{0}; // quadrature current component in rotor reference frame
+	float i_q_meas_{0};
+	float i_z_cmd_{0}; // zero current component in rotor reference frame
+	float i_z_meas_{0};
+
+	// Stator currents (measured).
+	float i_u_meas_{0};
+	float i_v_meas_{0};
+	float i_w_meas_{0};
+
+	// Rotating reference frame voltages (commanded, used to control rotating reference frame currents).
+	float v_d_cmd_{0};
+	float v_q_cmd_{0};
+	float v_z_cmd_{0};
+
+	// Stator voltages (transformed from rotating reference frame voltages), used to set duty cycle.
+	float v_u_cmd_{0}; // phase U current (flowing to GND)
+	float v_v_cmd_{0}; // phase V current (flowing to GND)
+	float v_w_cmd_{0}; // phase W current (flowing to GND)
+
+	void ControlCurrent();
 	void ControlTorque();
 	void ControlVelocity();
 	void ControlPosition();

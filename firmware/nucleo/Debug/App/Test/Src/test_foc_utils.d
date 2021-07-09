@@ -1,5 +1,6 @@
-App/Motor/Src/motor_driver.o: ../App/Motor/Src/motor_driver.cc \
- ../App/Motor/Inc/motor_driver.hh \
+App/Test/Src/test_foc_utils.o: ../App/Test/Src/test_foc_utils.cc \
+ ../App/Test/Inc/test_framework.hh ../App/Test/Inc/test_foc_utils.hh \
+ ../App/Inc/foc_utils.hh \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -36,10 +37,13 @@ App/Motor/Src/motor_driver.o: ../App/Motor/Src/motor_driver.cc \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
- ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
- ../App/Inc/foc_utils.hh
+ ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h
 
-../App/Motor/Inc/motor_driver.hh:
+../App/Test/Inc/test_framework.hh:
+
+../App/Test/Inc/test_foc_utils.hh:
+
+../App/Inc/foc_utils.hh:
 
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 
@@ -114,5 +118,3 @@ App/Motor/Src/motor_driver.o: ../App/Motor/Src/motor_driver.cc \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h:
 
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h:
-
-../App/Inc/foc_utils.hh:

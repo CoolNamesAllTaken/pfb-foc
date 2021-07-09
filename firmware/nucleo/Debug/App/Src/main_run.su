@@ -1,7 +1,7 @@
-half_bridge.hh:13:7:constexpr HalfBridge::HalfBridge()	16	static
-stspin830.hh:43:2:STSPIN830::STSPIN830(TIM_HandleTypeDef*, uint32_t, const volatile uint16_t&)	24	static
-main_run.cc:66:5:int main_run()	8	static
-main_run.cc:99:7:float WrapAngle(float)	16	static
-main_run.cc:108:6:void startTask1(void*)	48	static
-main_run.cc:132:6:void StartMotorControlTask(void*)	16	static
-main_run.cc:145:6:void RunAllTests()	8	static
+current_sensor.hh:21:2:CurrentSensor::CurrentSensor(uint16_t, float, float, float)	32	static
+motor_driver.hh:21:2:MotorDriver::MotorDriver(float, float, uint16_t)	24	static
+motor.hh:40:2:Motor::Motor(Motor::MotorConfig_t, MotorDriver*, Encoder*, CurrentSensor*, PIDController*)	24	static
+main_run.cc:70:5:int main_run()	128	static
+main_run.cc:109:6:void startTask1(void*)	40	static
+main_run.cc:135:6:void StartMotorControlTask(void*)	16	static
+main_run.cc:148:6:void RunAllTests()	8	static
