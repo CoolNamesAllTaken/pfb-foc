@@ -66,14 +66,14 @@ void Motor::Update() {
 	float ms_since_last_update = (static_cast<float>(curr_time_micros - last_update_micros_)) / 1000.0f;
 
 	// Read the encoder
-//	enc_->Update();
-//	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_pole_pairs));
+	enc_->Update();
+	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_pole_pairs));
 
 	// Read the current sensors
-//	csense_->ReadCurrents();
-//	i_u_meas_ = csense_->i_u;
-//	i_v_meas_ = csense_->i_v;
-//	i_w_meas_ = csense_->i_w;
+	csense_->ReadCurrents();
+	i_u_meas_ = csense_->i_u;
+	i_v_meas_ = csense_->i_v;
+	i_w_meas_ = csense_->i_w;
 
 	switch(mode_) {
 	case POSITION_CONTROL:

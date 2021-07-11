@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hh"
 #include "cmsis_os.h"
 
 #define RUN_TESTS

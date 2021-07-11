@@ -106,7 +106,7 @@ void TransRevDQZ(
  * @retval Electrical angle, in degrees.
  */
 float ElectricalAngle(float shaft_angle, uint16_t num_pole_pairs) {
-	return shaft_angle * num_pole_pairs;
+	return shaft_angle * static_cast<float>(num_pole_pairs);
 }
 
 /**

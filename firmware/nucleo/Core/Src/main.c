@@ -18,17 +18,15 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include <main.h>
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -58,8 +56,8 @@ PCD_HandleTypeDef hpcd_USB_OTG_FS;
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
+  .stack_size = 1000 * 4,
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 1000 * 4
 };
 /* USER CODE BEGIN PV */
 UART_HandleTypeDef * dbprint_uart; // debug print UART (STLink virtual COM port)
@@ -721,7 +719,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 //  printf("hay\r\n");
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	if (motor_control_task_handle != NULL) {
-		vTaskNotifyGiveFromISR(motor_control_task_handle, &xHigherPriorityTaskWoken);
+		vTaskNotifyGiveFromISR((TaskHandle_t)motor_control_task_handle, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }

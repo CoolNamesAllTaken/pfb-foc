@@ -1,4 +1,4 @@
-App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
+App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.hh \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -58,7 +58,7 @@ App/Src/main_run.o: ../App/Src/main_run.cc ../Core/Inc/main.h \
  ../App/Encoder/Inc/encoder.hh ../App/Inc/defaults.hh \
  ../App/Encoder/Inc/AS5048A.hh ../App/Encoder/Inc/encoder.hh
 
-../Core/Inc/main.h:
+../Core/Inc/main.hh:
 
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 

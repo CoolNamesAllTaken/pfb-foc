@@ -9,7 +9,7 @@
 #define INC_MAIN_RUN_HH_
 
 
-int main_run();
+//int main_run();
 
 
 #endif /* INC_MAIN_RUN_HH_ */

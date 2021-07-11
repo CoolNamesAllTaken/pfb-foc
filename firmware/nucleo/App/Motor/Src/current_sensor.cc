@@ -7,7 +7,6 @@
 
 #include "current_sensor.hh"
 
-
 /**
  * @brief Points the current sensor ADC count references to the correct spot. Assumes that conversion has been started and
  * is being transferred to a buffer via DMA.
@@ -22,6 +21,11 @@ void CurrentSensor::LinkToADC(volatile uint16_t* adc_counts_u_in, volatile uint1
 }
 
 void CurrentSensor::ReadCurrents() {
+	i_u = (static_cast<float>(*adc_counts_u_));
+	i_u /= adc_max_counts_;
+	i_u *= adc_max_volts_;
+	i_u -= adc_offset_volts_;
+	i_u /= adc_gain_;
 	i_u = (static_cast<float>(*adc_counts_u_) / adc_max_counts_ * adc_max_volts_ - adc_offset_volts_) / adc_gain_;
 	i_v = (static_cast<float>(*adc_counts_v_) / adc_max_counts_ * adc_max_volts_ - adc_offset_volts_) / adc_gain_;
 	i_w = (static_cast<float>(*adc_counts_w_) / adc_max_counts_ * adc_max_volts_ - adc_offset_volts_) / adc_gain_;
