@@ -3,10 +3,10 @@ as5048a.cc:25:1:AS5048A::AS5048A(SPI_HandleTypeDef*, GPIO_TypeDef*, uint16_t, ui
 as5048a.cc:41:6:virtual void AS5048A::Init()	16	static
 as5048a.cc:48:6:virtual void AS5048A::Update()	24	static
 as5048a.cc:57:9:uint8_t AS5048A::CalcEvenParity_(uint16_t)	24	static
-as5048a.cc:71:10:uint16_t AS5048A::CreateCommandPacket_(uint16_t, uint8_t)	24	static
-as5048a.cc:83:10:uint16_t AS5048A::CreateWritePacket_(uint16_t)	24	static
-as5048a.cc:95:10:uint16_t AS5048A::ParseReceivedPacket_(uint16_t)	16	static
-as5048a.cc:111:7:float AS5048A::ReadAngle_()	24	static
-as5048a.cc:124:10:uint16_t AS5048A::ClearErrorFlag_()	24	static
-as5048a.cc:136:6:void AS5048A::SPITransmit16_(uint16_t)	24	static
-as5048a.cc:149:10:uint16_t AS5048A::SPITransmitReceive16_(uint16_t)	32	static
+as5048a.cc:79:10:uint16_t AS5048A::CreateCommandPacket_(uint16_t, uint8_t)	24	static
+as5048a.cc:91:10:uint16_t AS5048A::CreateWritePacket_(uint16_t)	24	static
+as5048a.cc:103:10:uint16_t AS5048A::ParseReceivedPacket_(uint16_t)	16	static
+as5048a.cc:119:7:float AS5048A::ReadAngle_()	24	static
+as5048a.cc:132:10:uint16_t AS5048A::ClearErrorFlag_()	24	static
+as5048a.cc:144:6:void AS5048A::SPITransmit16_(uint16_t)	24	static
+as5048a.cc:157:10:uint16_t AS5048A::SPITransmitReceive16_(uint16_t)	32	static

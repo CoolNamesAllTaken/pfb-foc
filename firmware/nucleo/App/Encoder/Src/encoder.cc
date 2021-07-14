@@ -14,9 +14,9 @@
  * @retval Wrapped value, in degrees.
  */
 float Encoder::WrapAngle_(float raw_angle) {
-	float wrapped_angle = raw_angle - 360.0 * floor(raw_angle / 360.0);
-	if (wrapped_angle < 0) {
-		wrapped_angle += 360.0;
+	float wrapped_angle = raw_angle - 360.0f * floor(raw_angle / 360.0f);
+	if (wrapped_angle < 0.0f) {
+		wrapped_angle += 360.0f;
 	}
 	return wrapped_angle;
 }

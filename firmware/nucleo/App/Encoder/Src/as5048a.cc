@@ -55,11 +55,19 @@ void AS5048A::Update() {
  * @retval The parity bit that will reside in the MS bit to make the uint16_t have even parity.
  */
 uint8_t AS5048A::CalcEvenParity_(uint16_t val) {
-	uint8_t par = 0;
-	for (uint8_t shift = 0; shift < 15; shift++) {
-		par ^= ((val >> shift) & 0x1);
-	}
-	return par;
+	// Efficient method for calculating parity: https://www.geeksforgeeks.org/finding-the-parity-of-a-number-efficiently/
+	val = val<<1; // mask off 16th bit (MSb)
+	uint8_t x = val ^ (val>>8);
+	x = x^(x>>4);
+	x = x^(x>>2);
+	x = x^(x>>1);
+	return x&0b1 ? 1 : 0; // present parity bit to make integer has even parity
+	// Old algorithm.
+//	uint8_t par = 0;
+//	for (uint8_t shift = 0; shift < 15; shift++) {
+//		par ^= ((val >> shift) & 0x1);
+//	}
+//	return par;
 }
 
 /**
@@ -114,7 +122,7 @@ float AS5048A::ReadAngle_() {
 
 	uint16_t dummy_data = CreateWritePacket_(DATA_DUMMY);
 	uint16_t raw_angle_val = ParseReceivedPacket_(SPITransmitReceive16_(dummy_data));
-	return raw_angle_val * 360.0 / DATA_MAX;
+	return static_cast<float>(raw_angle_val) * 360.0f / static_cast<float>(DATA_MAX);
 }
 
 /**
