@@ -1,7 +1,6 @@
 current_sensor.hh:21:2:CurrentSensor::CurrentSensor(uint16_t, float, float, float)	32	static
 motor_driver.hh:21:2:MotorDriver::MotorDriver(float, float, uint16_t)	24	static
 motor.hh:40:2:Motor::Motor(Motor::MotorConfig_t, MotorDriver*, Encoder*, CurrentSensor*, PIDController*)	24	static
-main_run.cc:70:5:int main_run()	128	static
-main_run.cc:109:6:void startTask1(void*)	40	static
-main_run.cc:135:6:void StartMotorControlTask(void*)	16	static
-main_run.cc:148:6:void RunAllTests()	8	static
+main_run.cc:38:5:int main_run()	144	static
+main_run.cc:99:6:void ADCConvCpltCallback()	8	static
+main_run.cc:106:6:void RunAllTests()	8	static

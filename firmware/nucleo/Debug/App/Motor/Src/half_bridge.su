@@ -1,6 +1,0 @@
-half_bridge.cc:14:6:void HalfBridge::set_target_current(float)	16	static
-half_bridge.cc:22:7:float HalfBridge::get_target_current()	16	static
-half_bridge.cc:30:6:void HalfBridge::set_current_limit(float)	16	static
-half_bridge.cc:38:7:float HalfBridge::get_current_limit()	16	static
-half_bridge.cc:46:6:void HalfBridge::set_op_mode(HalfBridge::OpMode)	16	static
-half_bridge.cc:54:20:HalfBridge::OpMode HalfBridge::get_op_mode()	16	static

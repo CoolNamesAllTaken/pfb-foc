@@ -1,11 +1,10 @@
-#include "main.hh"
-#include "cmsis_os.h"
+#include "main.h"
+//#include "cmsis_os.h"
 
 #define RUN_TESTS
 #ifdef RUN_TESTS
 #include "test_framework.hh"
 #include "test_encoder.hh"
-#include "test_half_bridge.hh"
 #include "test_pid_controller.hh"
 #include "test_current_sensor.hh"
 #include "test_motor_driver.hh"
@@ -23,39 +22,8 @@
  * current_control_task Current control task for testing half bridge.
  */
 
-// Task Handles
-osThreadId_t task1Handle;
-osThreadId_t motor_control_task_handle;
-
 /* Constants */
-const uint32_t task1Freq = 10; // [Hz]
-const osThreadAttr_t task1Attributes = {
-	"task1", 							// cost char * name = name of the thread
-	0, 									// uint32_t attr_bits = attribute bits
-	osThreadDetached, 					// void * cb_mem = memory for control block
-	0, 									// uint32_t cb_size = size of provided memory for control block
-	NULL, 								// void * stack_mem = memory for stack
-	0, 									// uint32_t stack_size = size of stack
-	(osPriority_t) osPriorityNormal, 	// osPriority_t priority = initial thread priority (default: osPriorityNormal)
-	0, 									// TZModuleId_t tz_module = TrustZone module identifier
-	0 									// reserved = reserved (must be 0)
-};
-
-const osThreadAttr_t motor_control_task_attrs = {
-	"current_control_task", 			// cost char * name = name of the thread
-	0, 									// uint32_t attr_bits = attribute bits
-	osThreadDetached, 					// void * cb_mem = memory for control block
-	0, 									// uint32_t cb_size = size of provided memory for control block
-	NULL, 								// void * stack_mem = memory for stack
-	0, 									// uint32_t stack_size = size of stack
-	(osPriority_t) osPriorityHigh7, 	// osPriority_t priority = initial thread priority (default: osPriorityNormal)
-	0, 									// TZModuleId_t tz_module = TrustZone module identifier
-	0 									// reserved = reserved (must be 0)
-};
-
 /* Function Prototypes */
-void startTask1(void * argument);
-void StartMotorControlTask(void * argument);
 
 /* Global Variables */
 Motor * motor;
@@ -95,60 +63,49 @@ int main_run() {
 	PIDController * pid_torque = new PIDController(DEFAULT_PID_CURR_P, DEFAULT_PID_CURR_I, DEFAULT_PID_CURR_D, DEFAULT_PID_CURR_RAMP, kMaxPhaseVoltage);
 
 	motor = new Motor(config, driver, enc, csense, pid_torque);
+	motor->Init();
+	HAL_TIM_Base_Start_IT(half_bridge_pwm_timer); // start interrupts for TIM1 Update, which will trigger the motor updates
 
 #ifdef RUN_TESTS
 	RunAllTests();
 #endif
 
-	task1Handle = osThreadNew(startTask1, NULL, &task1Attributes);
-	motor_control_task_handle = osThreadNew(StartMotorControlTask, NULL, &motor_control_task_attrs);
-
-	return 1;
-}
-
-void startTask1(void * argument) {
 	// Currents to toggle between
 	float theta = 0;
 	float dtheta = 1;
 	float max_current = 2.0; // [A]
 
 	while(1) {
-		uint32_t osTickCount = osKernelGetTickCount();
-		uint32_t osTickFreq = osKernelGetTickFreq();
 		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 
 		motor->SetCurrent(max_current, 0.0f, 0.0f);
-		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-		osTickCount = osKernelGetTickCount();
+		HAL_Delay(1000);
+//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
 		motor->SetCurrent(0.0f, max_current, 0.0f);
-		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-		osTickCount = osKernelGetTickCount();
+		HAL_Delay(1000);
+//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
 		motor->SetCurrent(0.0f, 0.0f, max_current);
+		HAL_Delay(1000);
 
 		// Wrap theta
 //		theta = WrapAngle(theta + dtheta);
 
-		osDelayUntil(osTickCount + osTickFreq / task1Freq);
+//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
 	}
+
+	return 1;
 }
 
-void StartMotorControlTask(void * argument) {
-
-	motor->Init();
-
-	while (1) {
-		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
-		motor->Update();
-		HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
-		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // wait indefinitely for run notification, clear notifications (set to 0) upon receiving one
-	}
+void ADCConvCpltCallback() {
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
+	motor->Update();
+	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 }
 
 #ifdef RUN_TESTS
 void RunAllTests() {
 	TestEncoderAll();
 	TestPIDControllerAll();
-	TestHalfBridgeAll();
 	TestCurrentSensorAll();
 	TestMotorDriverAll();
 	TestFOCUtilsAll();

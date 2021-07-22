@@ -18,8 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <main.h>
-#include "cmsis_os.h"
+#include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -52,20 +51,11 @@ UART_HandleTypeDef huart3;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
-/* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
-  .stack_size = 1000 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
 /* USER CODE BEGIN PV */
 UART_HandleTypeDef * dbprint_uart; // debug print UART (STLink virtual COM port)
 SPI_HandleTypeDef * encoder_hspi; // SPI connection to encoder (AS5048A)
 volatile uint16_t curr_sense_adc_buf[ADC_BUF_LEN] = {0}; // buffer for ADC DMA reading
 TIM_HandleTypeDef *  half_bridge_pwm_timer;
-
-extern osThreadId_t motor_control_task_handle;
 
 /* USER CODE END PV */
 
@@ -80,45 +70,29 @@ static void MX_ADC1_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_TIM2_Init(void);
-void StartDefaultTask(void *argument);
-
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
-
 /**
   * @brief  The application entry point.
   * @retval int
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
 	dbprint_uart = &huart3;
 	encoder_hspi = &hspi5;
 	half_bridge_pwm_timer = &htim1;
-
-  /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
   /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -130,6 +104,7 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
+
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(ENC_SPI_CS_GPIO_Port, ENC_SPI_CS_Pin, GPIO_PIN_SET); // start with CS deselected
 
@@ -137,56 +112,21 @@ int main(void)
   if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)curr_sense_adc_buf, ADC_BUF_LEN) != HAL_OK) {
   	  Error_Handler();
   }
-  HAL_TIM_Base_Start_IT(&htim4);
 
+  main_run();
 
-  /* USER CODE END 2 */
-
-  /* Init scheduler */
-  osKernelInitialize();
-
-  /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
-  /* USER CODE END RTOS_MUTEX */
-
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
-
-  /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
-
-  /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
-
-  /* Create the thread(s) */
-  /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_EVENTS */
-  /* add events, ... */
-  /* USER CODE END RTOS_EVENTS */
-
-  /* Start scheduler */
-  osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
+  return 0;
 }
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
 
 /**
   * @brief System Clock Configuration
@@ -274,7 +214,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T2_TRGO;
+  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T1_TRGO;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 3;
   hadc1.Init.DMAContinuousRequests = ENABLE;
@@ -637,7 +577,7 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA2_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
 
 }
@@ -714,58 +654,19 @@ PUTCHAR_PROTOTYPE
   return ch;
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-  /* This is called after the conversion is completed */
-//  printf("hay\r\n");
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	if (motor_control_task_handle != NULL) {
-		vTaskNotifyGiveFromISR((TaskHandle_t)motor_control_task_handle, &xHigherPriorityTaskWoken);
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+//void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
+//  /* This is called after the conversion is completed */
+////  printf("hay\r\n");
+//	ADCConvCpltCallback();
+//}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	if (htim == &htim1) {
+		ADCConvCpltCallback(); // probably wanna leave a few cycles here to let the DMA do its work!
 	}
 }
 
 /* USER CODE END 4 */
-
-/* USER CODE BEGIN Header_StartDefaultTask */
-/**
-  * @brief  Function implementing the defaultTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
-{
-  /* USER CODE BEGIN 5 */
-  main_run();
-  /* Infinite loop */
-  for(;;)
-  {
-//	  HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
-	  osDelay(1000);
-  }
-  /* USER CODE END 5 */
-}
-
- /**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM6 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM6) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

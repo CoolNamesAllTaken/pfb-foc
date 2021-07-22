@@ -1,2 +1,0 @@
-stspin830.cc:24:6:virtual void STSPIN830::Init()	16	static
-stspin830.cc:35:6:virtual void STSPIN830::Update()	24	static

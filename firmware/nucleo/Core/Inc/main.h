@@ -60,6 +60,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 int main_run();
+void ADCConvCpltCallback();
 
 /* USER CODE END EFP */
 
