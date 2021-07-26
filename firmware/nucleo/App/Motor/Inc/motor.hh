@@ -50,7 +50,8 @@ public:
 		, pid_torque_(pid_torque) {};
 
 	void Init();
-	void Update();
+	void Update(bool fast_only = false);
+	void SlowUpdate();
 
 	void SetCurrent(float i_u, float i_v, float i_w);
 	void SetTorque(float i_d);

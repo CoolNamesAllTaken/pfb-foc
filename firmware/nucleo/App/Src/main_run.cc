@@ -75,17 +75,37 @@ int main_run() {
 	float dtheta = 1;
 	float max_current = 2.0; // [A]
 
-	while(1) {
-		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	uint32_t next_jump_time = HAL_GetTick();
+	uint16_t motor_state = 0;
 
-		motor->SetCurrent(max_current, 0.0f, 0.0f);
-		HAL_Delay(1000);
-//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-		motor->SetCurrent(0.0f, max_current, 0.0f);
-		HAL_Delay(1000);
-//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-		motor->SetCurrent(0.0f, 0.0f, max_current);
-		HAL_Delay(1000);
+	while(1) {
+		motor->SlowUpdate();
+
+		if (HAL_GetTick() >= next_jump_time) {
+			motor_state++;
+			if (motor_state > 2) {
+				motor_state = 0;
+			}
+			next_jump_time = HAL_GetTick() + 1000;
+		}
+		if (motor_state == 0) {
+			motor->SetCurrent(max_current, 0.0f, 0.0f);
+		} else if (motor_state == 1) {
+			motor->SetCurrent(0.0f, max_current, 0.0f);
+		} else {
+			motor->SetCurrent(0.0f, 0.0f, max_current);
+		}
+
+//		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+//
+//		motor->SetCurrent(max_current, 0.0f, 0.0f);
+//		HAL_Delay(1000);
+////		osDelayUntil(osTickCount + osTickFreq / task1Freq);
+//		motor->SetCurrent(0.0f, max_current, 0.0f);
+//		HAL_Delay(1000);
+////		osDelayUntil(osTickCount + osTickFreq / task1Freq);
+//		motor->SetCurrent(0.0f, 0.0f, max_current);
+//		HAL_Delay(1000);
 
 		// Wrap theta
 //		theta = WrapAngle(theta + dtheta);
@@ -98,7 +118,7 @@ int main_run() {
 
 void ADCConvCpltCallback() {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
-	motor->Update();
+	motor->Update(true);
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 }
 

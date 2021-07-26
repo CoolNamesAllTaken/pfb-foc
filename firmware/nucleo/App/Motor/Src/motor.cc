@@ -61,13 +61,18 @@ void Motor::SetPosition(float theta) {
 	theta_cmd_ = theta;
 }
 
-void Motor::Update() {
+/**
+ * @brief Runs the motor control loop. Slow / blocking functions can be optionally
+ * run using a separate, slower control loop with a lower frequency.
+ * @param[in] fast_only Run slow updates in a separate loop.
+ */
+void Motor::Update(bool fast_only) {
 	uint32_t curr_time_micros = GetTickMicros();
 	float ms_since_last_update = (static_cast<float>(curr_time_micros - last_update_micros_)) / 1000.0f;
 
-	// Read the encoder
-	enc_->Update();
-	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_pole_pairs));
+	if (!fast_only) {
+		SlowUpdate();
+	}
 
 	// Read the current sensors
 	csense_->ReadCurrents();
@@ -104,6 +109,16 @@ void Motor::Update() {
 	// Save as a snack for later.
 	last_update_micros_ = curr_time_micros;
 
+}
+
+/**
+ * @brief Control loop for slower / blocking functions. Can be executed separately to keep the
+ * main control loop running fast.
+ */
+void Motor::SlowUpdate() {
+	// Read the encoder
+	enc_->Update();
+	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_pole_pairs));
 }
 
 

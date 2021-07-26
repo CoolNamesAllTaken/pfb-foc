@@ -3,4 +3,5 @@ motor.cc:28:6:void Motor::SetCurrent(float, float, float)	24	static
 motor.cc:41:6:void Motor::SetTorque(float)	16	static
 motor.cc:50:6:void Motor::SetVelocity(float)	16	static
 motor.cc:59:6:void Motor::SetPosition(float)	16	static
-motor.cc:64:6:void Motor::Update()	24	static
+motor.cc:69:6:void Motor::Update(bool)	24	static
+motor.cc:118:6:void Motor::SlowUpdate()	16	static
