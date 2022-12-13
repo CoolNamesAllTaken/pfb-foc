@@ -100,7 +100,7 @@ void TransRevDQZ(
 
 /**
  * @brief Converts mechanical shaft angle into an electrical angle, since one 360 degree rotation of the shaft
- * represents 360 degrees * num pole pairs rotation of the electrical angle.
+ * represents 360 degrees * num poles rotation of the electrical angle.
  * @param[in] shaft_angle Shaft angle, in degrees.
  * @param[in] num_pole_pairs Number of pole pairs in the motor.
  * @retval Electrical angle, in degrees.

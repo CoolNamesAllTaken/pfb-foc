@@ -69,6 +69,8 @@ void ADCConvCpltCallback();
 #define USER_Btn_GPIO_Port GPIOC
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOH
+#define USER_POT_Pin GPIO_PIN_2
+#define USER_POT_GPIO_Port GPIOC
 #define CURR_FB_U_Pin GPIO_PIN_1
 #define CURR_FB_U_GPIO_Port GPIOA
 #define ENC_SPI_CS_Pin GPIO_PIN_4
@@ -105,8 +107,9 @@ void ADCConvCpltCallback();
 #define SWO_GPIO_Port GPIOB
 #define LD2_Pin GPIO_PIN_7
 #define LD2_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
-#define ADC_BUF_LEN 3
+#define ADC_BUF_LEN 4
 
 #ifdef __GNUC__
   /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -124,5 +127,3 @@ void ADCConvCpltCallback();
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

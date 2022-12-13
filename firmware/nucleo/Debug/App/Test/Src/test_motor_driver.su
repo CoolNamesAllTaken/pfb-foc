@@ -1,3 +1,3 @@
-motor_driver.hh:21:2:MotorDriver::MotorDriver(float, float, uint16_t)	24	static
-test_motor_driver.cc:12:6:bool TestMotorDriverCreate()	64	static
-test_motor_driver.cc:21:6:void TestMotorDriverAll()	16	static
+../App/Motor/Inc/motor_driver.hh:21:2:MotorDriver::MotorDriver(float, float, uint16_t)	24	static
+../App/Test/Src/test_motor_driver.cc:12:6:bool TestMotorDriverCreate()	64	static
+../App/Test/Src/test_motor_driver.cc:21:6:void TestMotorDriverAll()	16	static

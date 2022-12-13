@@ -16,20 +16,13 @@
 // Include child classes of motor controller components
 #include "AS5048A.hh"
 
-/**
- * Task Map
- * Task1 Example task.
- * current_control_task Current control task for testing half bridge.
- */
-
 /* Constants */
+const uint16_t kUserPotADCBufIndex = 3;
+
 /* Function Prototypes */
 
 /* Global Variables */
 Motor * motor;
-//STSPIN830 * g_half_bridge_u;
-//STSPIN830 * g_half_bridge_v;
-//STSPIN830 * g_half_bridge_w;
 
 /**
  * @brief Main function that avoids all the auto-generated junk from ST CubeMX.
@@ -37,10 +30,10 @@ Motor * motor;
  */
 int main_run() {
 	Motor::MotorConfig_t config = {
-		10, // num_pole_pairs
+		6, // num_pole_pairs
 		5.0f, // [Ohms] phase_resistance
 		0.0f, // [nH] phase_inductance (unused)
-		2.0f, // [A] current_limit
+		4.0f, // [A] current_limit
 		DEFAULT_POWER_SUPPLY_VOLTAGE // [V] power_suply_voltage
 	};
 
@@ -70,47 +63,19 @@ int main_run() {
 	RunAllTests();
 #endif
 
-	// Currents to toggle between
-	float theta = 0;
-	float dtheta = 1;
-	float max_current = 2.0; // [A]
 
-	uint32_t next_jump_time = HAL_GetTick();
-	uint16_t motor_state = 0;
+	float homing_current = motor->GetConfig().current_limit;
+	motor->SetCurrent(homing_current, -homing_current/2.0f, -homing_current/2.0f);
+	motor->Update();
+	HAL_Delay(1000); // Let motor settle. Should line up so that all i_d=current_limit, i_q=0
+	motor->Update(); // for debug viewing
+	enc->set_zero_angle();
+
+//	motor->SetTorque(-10);
 
 	while(1) {
-		motor->SlowUpdate();
-
-		if (HAL_GetTick() >= next_jump_time) {
-			motor_state++;
-			if (motor_state > 2) {
-				motor_state = 0;
-			}
-			next_jump_time = HAL_GetTick() + 1000;
-		}
-		if (motor_state == 0) {
-			motor->SetCurrent(max_current, 0.0f, 0.0f);
-		} else if (motor_state == 1) {
-			motor->SetCurrent(0.0f, max_current, 0.0f);
-		} else {
-			motor->SetCurrent(0.0f, 0.0f, max_current);
-		}
-
-//		HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-//
-//		motor->SetCurrent(max_current, 0.0f, 0.0f);
-//		HAL_Delay(1000);
-////		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-//		motor->SetCurrent(0.0f, max_current, 0.0f);
-//		HAL_Delay(1000);
-////		osDelayUntil(osTickCount + osTickFreq / task1Freq);
-//		motor->SetCurrent(0.0f, 0.0f, max_current);
-//		HAL_Delay(1000);
-
-		// Wrap theta
-//		theta = WrapAngle(theta + dtheta);
-
-//		osDelayUntil(osTickCount + osTickFreq / task1Freq);
+		motor->SetTorque(homing_current * (curr_sense_adc_buf[kUserPotADCBufIndex]-static_cast<float>(kADCMaxCounts)/2.0f)/(static_cast<float>(kADCMaxCounts)/2.0f));
+		motor->Update(); // perform fast and slow update
 	}
 
 	return 1;
@@ -118,7 +83,7 @@ int main_run() {
 
 void ADCConvCpltCallback() {
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_SET);
-	motor->Update(true);
+//	motor->Update(true);
 	HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 }
 

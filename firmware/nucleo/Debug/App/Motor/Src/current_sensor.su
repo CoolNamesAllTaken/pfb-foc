@@ -1,2 +1,2 @@
-current_sensor.cc:17:6:void CurrentSensor::LinkToADC(volatile uint16_t*, volatile uint16_t*, volatile uint16_t*)	24	static
-current_sensor.cc:23:6:void CurrentSensor::ReadCurrents()	16	static
+../App/Motor/Src/current_sensor.cc:17:6:void CurrentSensor::LinkToADC(volatile uint16_t*, volatile uint16_t*, volatile uint16_t*)	24	static
+../App/Motor/Src/current_sensor.cc:23:6:void CurrentSensor::ReadCurrents()	16	static

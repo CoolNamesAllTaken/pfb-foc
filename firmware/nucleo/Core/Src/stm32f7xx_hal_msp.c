@@ -97,13 +97,20 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     /* Peripheral clock enable */
     __HAL_RCC_ADC1_CLK_ENABLE();
 
+    __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**ADC1 GPIO Configuration
+    PC2     ------> ADC1_IN12
     PA1     ------> ADC1_IN1
     PB0     ------> ADC1_IN8
     PB1     ------> ADC1_IN9
     */
+    GPIO_InitStruct.Pin = USER_POT_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(USER_POT_GPIO_Port, &GPIO_InitStruct);
+
     GPIO_InitStruct.Pin = CURR_FB_U_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -157,10 +164,13 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     __HAL_RCC_ADC1_CLK_DISABLE();
 
     /**ADC1 GPIO Configuration
+    PC2     ------> ADC1_IN12
     PA1     ------> ADC1_IN1
     PB0     ------> ADC1_IN8
     PB1     ------> ADC1_IN9
     */
+    HAL_GPIO_DeInit(USER_POT_GPIO_Port, USER_POT_Pin);
+
     HAL_GPIO_DeInit(CURR_FB_U_GPIO_Port, CURR_FB_U_Pin);
 
     HAL_GPIO_DeInit(GPIOB, CURR_FB_W_Pin|CURR_FB_V_Pin);
@@ -383,11 +393,22 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
   if(huart->Instance==USART3)
   {
   /* USER CODE BEGIN USART3_MspInit 0 */
 
   /* USER CODE END USART3_MspInit 0 */
+
+  /** Initializes the peripherals clock
+  */
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3;
+    PeriphClkInitStruct.Usart3ClockSelection = RCC_USART3CLKSOURCE_PCLK1;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
     /* Peripheral clock enable */
     __HAL_RCC_USART3_CLK_ENABLE();
 
@@ -448,11 +469,21 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
   if(hpcd->Instance==USB_OTG_FS)
   {
   /* USER CODE BEGIN USB_OTG_FS_MspInit 0 */
 
   /* USER CODE END USB_OTG_FS_MspInit 0 */
+
+  /** Initializes the peripherals clock
+  */
+    PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_CLK48;
+    PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48SOURCE_PLL;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+    {
+      Error_Handler();
+    }
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**USB_OTG_FS GPIO Configuration
@@ -507,5 +538,3 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef* hpcd)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

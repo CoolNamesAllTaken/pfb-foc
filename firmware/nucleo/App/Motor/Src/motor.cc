@@ -8,6 +8,10 @@
 #include "motor.hh"
 #include "foc_utils.hh"
 
+Motor::MotorConfig_t Motor::GetConfig() {
+	return config_;
+}
+
 void Motor::Init() {
 	// Initialize all the lil bits
 	enc_->Init();
@@ -36,11 +40,11 @@ void Motor::SetCurrent(float i_u, float i_v, float i_w) {
 /**
  * @brief Set target quadrature current magnitude (torque) and set motor to torque
  * control mode.
- * @param[in] i_d Target quadrature current, in Amps.
+ * @param[in] i_q Target quadrature current, in Amps.
  */
-void Motor::SetTorque(float i_d) {
+void Motor::SetTorque(float i_q) {
 	mode_ = TORQUE_CONTROL;
-	i_d_cmd_ = CONSTRAIN(i_d, 0.0f, config_.current_limit);
+	i_q_cmd_ = CONSTRAIN(i_q, -config_.current_limit, config_.current_limit);
 }
 
 /**
@@ -87,15 +91,19 @@ void Motor::Update(bool fast_only) {
 		// Set torque to control velocity.
 	case TORQUE_CONTROL:
 		// Use DQZ transform to transform measured phase currents into rotating reference frame.
-		TransFwdDQZ(theta_meas_, i_u_meas_, i_v_meas_, i_w_meas_, i_d_meas_, i_q_meas_, i_z_meas_);
+		TransFwdDQZ(
+				theta_meas_, i_u_meas_, i_v_meas_, i_w_meas_, // params in
+				i_d_meas_, i_q_meas_, i_z_meas_); // params out
 
 		// Set voltages in rotating reference frame to control currents in rotating reference frame.
-		v_d_cmd_ = 0; // TODO: add PID controller for i_d error for true FOC control.
+		v_d_cmd_ = 0.0f; // TODO: add PID controller for i_d error for true FOC control.
 		v_q_cmd_ = pid_torque_->Update(i_q_cmd_ - i_q_meas_, ms_since_last_update);
 		v_z_cmd_ = 0;
 
 		// Convert rotating reference frame voltages back into stator voltages.
-		TransRevDQZ(theta_meas_, v_d_cmd_, v_q_cmd_, v_z_cmd_, v_u_cmd_, v_v_cmd_, v_w_cmd_);
+		TransRevDQZ(
+				theta_meas_, v_d_cmd_, v_q_cmd_, v_z_cmd_, // params in
+				v_u_cmd_, v_v_cmd_, v_w_cmd_); // params out
 
 	case CURRENT_CONTROL:
 		// Set voltage (duty cycle) to control current.
@@ -118,7 +126,7 @@ void Motor::Update(bool fast_only) {
 void Motor::SlowUpdate() {
 	// Read the encoder
 	enc_->Update();
-	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_pole_pairs));
+	theta_meas_ = NormalizeAngle(ElectricalAngle(enc_->get_angle(), config_.num_poles));
 }
 
 

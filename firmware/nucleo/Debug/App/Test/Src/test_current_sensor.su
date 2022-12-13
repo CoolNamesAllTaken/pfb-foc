@@ -1,4 +1,4 @@
-current_sensor.hh:21:2:CurrentSensor::CurrentSensor(uint16_t, float, float, float)	32	static
-test_current_sensor.cc:11:6:bool CurrentsAreCorrect(CurrentSensor, float, float, float)	40	static
-test_current_sensor.cc:25:6:bool TestCurrentSensorCurrent()	120	static
-test_current_sensor.cc:61:6:void TestCurrentSensorAll()	16	static
+../App/Motor/Inc/current_sensor.hh:21:2:CurrentSensor::CurrentSensor(uint16_t, float, float, float)	32	static
+../App/Test/Src/test_current_sensor.cc:11:6:bool CurrentsAreCorrect(CurrentSensor, float, float, float)	40	static
+../App/Test/Src/test_current_sensor.cc:25:6:bool TestCurrentSensorCurrent()	120	static
+../App/Test/Src/test_current_sensor.cc:61:6:void TestCurrentSensorAll()	16	static

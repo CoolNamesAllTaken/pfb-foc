@@ -10,9 +10,9 @@
 
 #define DEFAULT_POWER_SUPPLY_VOLTAGE 12 // [V] power supply voltage
 
-#define DEFAULT_PID_CURR_P 3.0f
-#define DEFAULT_PID_CURR_I 300.0f
-#define DEFAULT_PID_CURR_D 0.0f
+#define DEFAULT_PID_CURR_P 30.0f
+#define DEFAULT_PID_CURR_I 0.0f
+#define DEFAULT_PID_CURR_D 10.0f
 #define DEFAULT_PID_CURR_RAMP 0
 
 

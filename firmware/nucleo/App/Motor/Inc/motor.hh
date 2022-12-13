@@ -25,7 +25,7 @@ public:
 	};
 
 	struct MotorConfig_t {
-		uint16_t num_pole_pairs; // number of diametrically opposite pole pairs in motor
+		uint16_t num_poles; // number of diametrically opposite pole pairs in motor
 		float phase_resistance; // [Ohms] resistance of a single motor phase
 		float phase_inductance; // [nH] unused
 		float current_limit; // [A] current limit (max magnitude of i_dq vector)
@@ -49,12 +49,14 @@ public:
 		, csense_(csense)
 		, pid_torque_(pid_torque) {};
 
+	MotorConfig_t GetConfig();
+
 	void Init();
 	void Update(bool fast_only = false);
 	void SlowUpdate();
 
 	void SetCurrent(float i_u, float i_v, float i_w);
-	void SetTorque(float i_d);
+	void SetTorque(float i_q);
 	void SetVelocity(float omega);
 	void SetPosition(float theta);
 
